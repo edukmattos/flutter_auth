@@ -33,7 +33,7 @@ class SignInPageState extends ModularState<SignInPage, SignInStore> {
             Container(
               alignment: Alignment.centerLeft,
               decoration: kBoxDecorationStyle,
-              height: 45,
+              height: kDefaultPadding * 2.5,
               child: TextFormField(
                 autofocus: true,
                 onChanged: controller.changeEmail,
@@ -63,8 +63,8 @@ class SignInPageState extends ModularState<SignInPage, SignInStore> {
                   ),
                   suffixIcon: Padding(
                     padding: EdgeInsetsDirectional.only(
-                      top: kDefaultPadding * 1.00,
-                      end: kDefaultPadding * 0.25,
+                      top: kDefaultPadding * 0.60,
+                      end: kDefaultPadding * 0.50,
                     ),
                     // ignore: unrelated_type_equality_checks
                     child: controller.validateEmail() == null
@@ -90,83 +90,89 @@ class SignInPageState extends ModularState<SignInPage, SignInStore> {
   }
 
   Widget _buildPasswordTF() {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: <Widget>[
-        //Text(
-        //  'E-mail',
-        //  style: kLabelStyle,
-        //),
-        //SizedBox(height: kDefaultPadding * 0.5),
-        Container(
-          alignment: Alignment.centerLeft,
-          decoration: kBoxDecorationStyleLight,
-          height: kDefaultPadding * 2.5,
-          child: Padding(
-            padding: EdgeInsets.only(top: kDefaultPadding * 0.00),
-            child: TextFormField(
-              onChanged: controller.changePassword,
-              autofocus: false,
-              obscureText: true,
-              keyboardType: TextInputType.text,
-              style: TextStyle(
-                color: Colors.white,
-              ),
-              decoration: InputDecoration(
-                enabledBorder: OutlineInputBorder(
-                  borderSide: BorderSide(
-                    color: Colors.transparent,
-                  ),
-                  borderRadius: BorderRadius.circular(10.0),
-                ),
-                focusedBorder: OutlineInputBorder(
-                  borderSide: BorderSide(
-                    color: Colors.white,
-                  ),
-                  borderRadius: BorderRadius.circular(10.0),
-                ),
-                //border: InputBorder.none,
-                labelText: "Password",
-                labelStyle: kLabelStyle,
-                contentPadding: EdgeInsets.only(
-                  top: kDefaultPadding * 0.0,
-                ),
+    return Observer(
+        name: 'observerPassword',
+        builder: (_) {
+          return Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              //Text(
+              //  'E-mail',
+              //  style: kLabelStyle,
+              //),
+              //SizedBox(height: kDefaultPadding * 0.5),
+              Container(
+                alignment: Alignment.centerLeft,
+                decoration: kBoxDecorationStyleLight,
+                height: kDefaultPadding * 2.5,
+                child: Padding(
+                  padding: EdgeInsets.only(top: kDefaultPadding * 0.00),
+                  child: TextFormField(
+                    onChanged: controller.changePassword,
+                    autofocus: false,
+                    obscureText: true,
+                    keyboardType: TextInputType.text,
+                    style: TextStyle(
+                      color: Colors.white,
+                    ),
+                    decoration: InputDecoration(
+                      enabledBorder: OutlineInputBorder(
+                        borderSide: BorderSide(
+                          color: Colors.transparent,
+                        ),
+                        borderRadius: BorderRadius.circular(10.0),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(
+                          color: Colors.white,
+                        ),
+                        borderRadius: BorderRadius.circular(10.0),
+                      ),
+                      //border: InputBorder.none,
+                      labelText: "Password",
+                      labelStyle: kLabelStyle,
+                      contentPadding: EdgeInsets.only(
+                        top: kDefaultPadding * 0.0,
+                      ),
 
-                prefixIcon: Padding(
-                  padding: EdgeInsets.symmetric(
-                    horizontal: kDefaultPadding * 0.0,
-                    vertical: kDefaultPadding * 0.0,
-                  ),
-                  child: Icon(
-                    Icons.lock,
-                    color: Colors.white,
-                  ),
-                ),
-                suffixIcon: Padding(
-                  padding: EdgeInsetsDirectional.only(
-                    top: kDefaultPadding * 1.00,
-                    end: kDefaultPadding * 0.25,
-                  ),
-                  //child: controller.validatePassword() == null
-                  //    ? null
-                  //    : Text(
-                  //        controller.validatePassword(),
-                  //        style: TextStyle(
-                  //            color: Colors.red,
-                  //            fontFamily: 'OpenSans',
-                  //            fontSize: 12),
-                  //      ),
-                ),
-                //hintText: 'E-mail',
-                //hintStyle: kHintTextStyle,
+                      prefixIcon: Padding(
+                        padding: EdgeInsets.symmetric(
+                          horizontal: kDefaultPadding * 0.0,
+                          vertical: kDefaultPadding * 0.0,
+                        ),
+                        child: Icon(
+                          Icons.lock,
+                          color: Colors.white,
+                        ),
+                      ),
+                      suffixIcon: Padding(
+                        padding: EdgeInsetsDirectional.only(
+                          top: kDefaultPadding * 0.60,
+                          end: kDefaultPadding * 0.50,
+                        ),
+                        // ignore: unrelated_type_equality_checks
+                        child: controller.validatePassword() == null
+                            ? null
+                            : Text(
+                                controller.validatePassword()!,
+                                style: TextStyle(
+                                  color: Colors.red,
+                                  fontFamily: 'OpenSans',
+                                  fontSize: 12,
+                                ),
+                              ),
+                      ),
+                    ),
+                    //hintText: 'E-mail',
+                    //hintStyle: kHintTextStyle,
 
-                //errorText: controller.validateEmail(),
+                    //errorText: controller.validateEmail(),
+                  ),
+                ),
               ),
-            ),
-          ),
-        ),
-      ],
-    );
+            ],
+          );
+        });
   }
 
   Widget _buildSignInBtn() {

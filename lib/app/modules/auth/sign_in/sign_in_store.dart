@@ -1,5 +1,6 @@
 import 'package:mobx/mobx.dart';
-import 'package:queen_validators/queen_validators.dart';
+import 'package:string_validator/string_validator.dart' as stringValidator;
+import 'package:validators/validators.dart';
 
 part 'sign_in_store.g.dart';
 
@@ -23,21 +24,34 @@ abstract class _SignInStoreBase with Store {
 
   @computed
   bool get isFormValid {
-    return validateEmail() == null;
+    return validateEmail() == null && validatePassword() == null;
   }
 
   String? validateEmail() {
-    print(email.isEmail);
-
-    if (email.isEmpty) {
-      // Check is Null
+    var isValid = isNull(email);
+    if (isValid) {
       return "Obrigatório";
     } else {
-      if (email.isEmail) {
-        // Check is Email
+      var isValid = stringValidator.isEmail(email);
+      if (isValid) {
         return null;
       } else {
         return "Inválido";
+      }
+    }
+  }
+
+  String? validatePassword() {
+    var isValid = isNull(password);
+    if (isValid) {
+      return "Obrigatório";
+    } else {
+      var lenght = 8;
+      var isValid = stringValidator.isLength(password, lenght);
+      if (isValid) {
+        return null;
+      } else {
+        return "Mín: $lenght digitos";
       }
     }
   }
