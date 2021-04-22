@@ -23,10 +23,10 @@ class SignInPageState extends ModularState<SignInPage, SignInStore> {
         return Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            Text(
-              "Email",
-              style: kLabelStyle,
-            ),
+            //Text(
+            //  "Email",
+            //  style: kLabelStyle,
+            //),
             SizedBox(
               height: 5,
             ),
