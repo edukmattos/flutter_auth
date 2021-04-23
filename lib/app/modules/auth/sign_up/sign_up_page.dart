@@ -1,20 +1,20 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:easy_localization/easy_localization.dart';
 
 import '../../../config/theme/fonts.dart';
-import 'sign_in_store.dart';
+import 'sign_up_store.dart';
 
-class SignInPage extends StatefulWidget {
+class SignUpPage extends StatefulWidget {
   final String title;
-  const SignInPage({Key? key, this.title = "SignInPage"}) : super(key: key);
+  const SignUpPage({Key? key, this.title = "SignUpPage"}) : super(key: key);
   @override
-  SignInPageState createState() => SignInPageState();
+  SignUpPageState createState() => SignUpPageState();
 }
 
-class SignInPageState extends ModularState<SignInPage, SignInStore> {
+class SignUpPageState extends ModularState<SignUpPage, SignUpStore> {
   final _scaffoldKey = GlobalKey<FormState>();
 
   Widget _buildEmailTF() {
@@ -41,7 +41,7 @@ class SignInPageState extends ModularState<SignInPage, SignInStore> {
                 keyboardType: TextInputType.emailAddress,
                 style: TextStyle(color: Colors.white),
                 decoration: InputDecoration(
-                  labelText: 'E-mail',
+                  labelText: 'Email',
                   labelStyle: kLabelStyle,
                   enabledBorder: OutlineInputBorder(
                     borderSide: BorderSide(
@@ -212,7 +212,7 @@ class SignInPageState extends ModularState<SignInPage, SignInStore> {
   Widget build(BuildContext context) {
     return Scaffold(
       //appBar: AppBar(
-      //  title: Text(widget.title),
+      //  title: Text('auth.signUp.pageName').tr(),
       //),
       key: _scaffoldKey,
       body: Form(
