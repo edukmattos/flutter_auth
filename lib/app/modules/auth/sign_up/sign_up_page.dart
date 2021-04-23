@@ -41,7 +41,7 @@ class SignUpPageState extends ModularState<SignUpPage, SignUpStore> {
                 keyboardType: TextInputType.emailAddress,
                 style: TextStyle(color: Colors.white),
                 decoration: InputDecoration(
-                  labelText: 'Email',
+                  labelText: 'fields.email'.tr(),
                   labelStyle: kLabelStyle,
                   enabledBorder: OutlineInputBorder(
                     borderSide: BorderSide(
@@ -130,7 +130,7 @@ class SignUpPageState extends ModularState<SignUpPage, SignUpStore> {
                         borderRadius: BorderRadius.circular(10.0),
                       ),
                       //border: InputBorder.none,
-                      labelText: "Password",
+                      labelText: 'fields.password'.tr(),
                       labelStyle: kLabelStyle,
                       contentPadding: EdgeInsets.only(
                         top: kDefaultPadding * 0.0,
@@ -239,7 +239,7 @@ class SignUpPageState extends ModularState<SignUpPage, SignUpStore> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
                         Text(
-                          'auth.signUp.pageName'.tr(),
+                          'auth.sign_up.page_name'.tr(),
                           style: kFontTextStyle30,
                         ),
                         SizedBox(

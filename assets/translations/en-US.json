@@ -1,11 +1,15 @@
 {
     "auth":{
-        "signUp": {
-            "pageName": "Sign Up"
+        "sign_up": {
+            "page_name": "Sign Up"
         },
-        "signIn": {
-            "pageName": "Sign In"
+        "sign_in": {
+            "page_name": "Sign In"
         }
+    },
+    "fields": {
+        "email": "email",
+        "password": "Password"
     },
     "title": "Hello",
     "msg": "Hello {} in the {} world ",

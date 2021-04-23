@@ -239,7 +239,7 @@ class SignInPageState extends ModularState<SignInPage, SignInStore> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
                         Text(
-                          'auth.signUp.pageName'.tr(),
+                          'auth.sign_in.page_name'.tr(),
                           style: kFontTextStyle30,
                         ),
                         SizedBox(

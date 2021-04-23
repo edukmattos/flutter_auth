@@ -1,11 +1,15 @@
 {
     "auth":{
-        "signUp": {
-            "pageName": "Registro"
+        "sign_up": {
+            "page_name": "Registroo"
         },
-        "signIn": {
-            "pageName": "Enrar"
+        "sign_in": {
+            "page_name": "Entrar"
         }
+    },
+    "fields": {
+        "email": "E-mail",
+        "password": "Senha"
     },
     "title": "Olaa",
     "msg": "Hello {} in the {} world ",
