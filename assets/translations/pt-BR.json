@@ -1,7 +1,7 @@
 {
     "auth":{
         "sign_up": {
-            "page_name": "Registroo"
+            "page_name": "Registro"
         },
         "sign_in": {
             "page_name": "Entrar"
