@@ -61,7 +61,7 @@ class SignInPageState extends ModularState<SignInPage, SignInStore> {
                     top: 14,
                   ),
                   prefixIcon: Icon(
-                    Icons.email,
+                    Icons.email_outlined,
                     color: Colors.white,
                   ),
                   suffixIcon: Padding(
@@ -144,7 +144,7 @@ class SignInPageState extends ModularState<SignInPage, SignInStore> {
                           vertical: kDefaultPadding * 0.0,
                         ),
                         child: Icon(
-                          Icons.lock,
+                          Icons.lock_outline_rounded,
                           color: Colors.white,
                         ),
                       ),
@@ -191,9 +191,7 @@ class SignInPageState extends ModularState<SignInPage, SignInStore> {
                 ? () {
                     print("OK");
                   }
-                : () {
-                    print("OK");
-                  },
+                : null,
             padding: EdgeInsets.all(10.0),
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(5.0),
@@ -282,60 +280,44 @@ class SignInPageState extends ModularState<SignInPage, SignInStore> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      //appBar: AppBar(
-      //  title: Text(widget.title),
-      //),
-      key: _scaffoldKey,
-      body: Form(
-        child: AnnotatedRegion<SystemUiOverlayStyle>(
-          value: SystemUiOverlayStyle.light,
-          child: GestureDetector(
-            //onTap: () => FocusScope.of(context).unfocus(),
-            child: Stack(
-              children: <Widget>[
-                Container(
-                  height: double.infinity,
-                  width: double.infinity,
-                  decoration: kBoxDecorationStyleBackgroundLight,
-                ),
-                Container(
-                  height: double.infinity,
-                  child: SingleChildScrollView(
-                    physics: AlwaysScrollableScrollPhysics(),
-                    padding: EdgeInsets.symmetric(
-                      horizontal: kDefaultPadding,
-                      vertical: kDefaultPadding,
-                    ),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        Text(
-                          'auth.sign_in.page_name'.tr(),
-                          style: kFontTextStyle30,
-                        ),
-                        SizedBox(
-                          height: kDefaultPadding * 0.5,
-                        ),
-                        _buildEmailTF(),
-                        SizedBox(
-                          height: kDefaultPadding * 1.0,
-                        ),
-                        _buildPasswordTF(),
-                        _buildForgotPasswordBtn(),
-                        SizedBox(
-                          height: kDefaultPadding * 1.0,
-                        ),
-                        _buildSignInBtn(),
-                        _buildDividerOr(),
-                        SizedBox(
-                          height: kDefaultPadding * 1.0,
-                        ),
-                        _buildSignInBtnGoogle()
-                      ],
+      backgroundColor: Color(0xFF61A8EB),
+      body: SafeArea(
+        child: Center(
+          child: SingleChildScrollView(
+            padding: const EdgeInsets.all(8.0),
+            child: Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: <Widget>[
+                  SizedBox(
+                    height: 100.0,
+                    child: Image.asset(
+                      "assets/images/logos/app_logo.png",
+                      fit: BoxFit.contain,
                     ),
                   ),
-                )
-              ],
+                  Text(
+                    'auth.sign_in.page_name'.tr(),
+                    style: kFontTextStyle30,
+                  ),
+                  SizedBox(
+                    height: kDefaultPadding * 1.5,
+                  ),
+                  _buildEmailTF(),
+                  SizedBox(
+                    height: kDefaultPadding * 1.0,
+                  ),
+                  _buildPasswordTF(),
+                  _buildForgotPasswordBtn(),
+                  _buildSignInBtn(),
+                  _buildDividerOr(),
+                  SizedBox(
+                    height: kDefaultPadding * 1.0,
+                  ),
+                  _buildSignInBtnGoogle()
+                ],
+              ),
             ),
           ),
         ),
