@@ -47,7 +47,7 @@ abstract class _SignInStoreBase with Store {
     if (isValid) {
       return 'fields.warning_msg.required'.tr();
     } else {
-      var lenght = 18;
+      var lenght = 8;
       var isValid = stringValidator.isLength(password, lenght);
       if (isValid) {
         return null;
