@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_auth/app/config/theme/app_config_colors.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:sign_button/sign_button.dart';
 
 import '../../../config/theme/fonts.dart';
 import 'sign_in_store.dart';
@@ -41,7 +43,7 @@ class SignInPageState extends ModularState<SignInPage, SignInStore> {
                 keyboardType: TextInputType.emailAddress,
                 style: TextStyle(color: Colors.white),
                 decoration: InputDecoration(
-                  labelText: 'E-mail',
+                  labelText: 'fields.email'.tr(),
                   labelStyle: kLabelStyle,
                   enabledBorder: OutlineInputBorder(
                     borderSide: BorderSide(
@@ -130,7 +132,7 @@ class SignInPageState extends ModularState<SignInPage, SignInStore> {
                         borderRadius: BorderRadius.circular(10.0),
                       ),
                       //border: InputBorder.none,
-                      labelText: "Password",
+                      labelText: 'fields.password'.tr(),
                       labelStyle: kLabelStyle,
                       contentPadding: EdgeInsets.only(
                         top: kDefaultPadding * 0.0,
@@ -198,13 +200,82 @@ class SignInPageState extends ModularState<SignInPage, SignInStore> {
             ),
             color: Colors.blue,
             child: Text(
-              "Submit",
-              // ignore: lines_longer_than_80_chars
+              'buttons.submit'.tr(),
               style: kLightButtonTextStyle20,
             ),
           ),
         );
       },
+    );
+  }
+
+  Widget _buildDividerOr() {
+    return Row(
+      children: <Widget>[
+        Expanded(
+          child: Container(
+            margin: const EdgeInsets.only(
+              left: kDefaultPadding * 0.00,
+              right: kDefaultPadding * 0.50,
+            ),
+            child: Divider(
+              color: AppConfigColors.white,
+              height: 20,
+            ),
+          ),
+        ),
+        Text('texts.or'.tr(), style: kFontTextStyle15),
+        Expanded(
+          child: Container(
+            margin: const EdgeInsets.only(
+              left: kDefaultPadding * 0.50,
+              right: kDefaultPadding * 0.00,
+            ),
+            child: Divider(
+              color: AppConfigColors.white,
+              height: 20,
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildSignInBtnGoogle() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        Container(
+          alignment: Alignment.center,
+          //decoration: kBoxDecorationStyleLight,
+          height: kDefaultPadding * 2.5,
+          child: Padding(
+            padding: EdgeInsets.only(top: kDefaultPadding * 0.00),
+            child: SignInButton.mini(
+              buttonType: ButtonType.google,
+              buttonSize: ButtonSize.large, // small(default), medium, large
+              //btnText: 'auth.sign_in_google'.tr(),
+              onPressed: () {
+                print('click');
+              },
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildForgotPasswordBtn() {
+    return Container(
+      alignment: Alignment.centerRight,
+      child: FlatButton(
+        onPressed: () => print('Forgot Password Button Pressed'),
+        padding: EdgeInsets.only(right: 0.0),
+        child: Text(
+          'texts.forgot_password'.tr(),
+          style: kLabelStyle,
+        ),
+      ),
     );
   }
 
@@ -219,7 +290,7 @@ class SignInPageState extends ModularState<SignInPage, SignInStore> {
         child: AnnotatedRegion<SystemUiOverlayStyle>(
           value: SystemUiOverlayStyle.light,
           child: GestureDetector(
-            onTap: () => FocusScope.of(context).unfocus(),
+            //onTap: () => FocusScope.of(context).unfocus(),
             child: Stack(
               children: <Widget>[
                 Container(
@@ -250,10 +321,16 @@ class SignInPageState extends ModularState<SignInPage, SignInStore> {
                           height: kDefaultPadding * 1.0,
                         ),
                         _buildPasswordTF(),
+                        _buildForgotPasswordBtn(),
                         SizedBox(
                           height: kDefaultPadding * 1.0,
                         ),
-                        _buildSignInBtn()
+                        _buildSignInBtn(),
+                        _buildDividerOr(),
+                        SizedBox(
+                          height: kDefaultPadding * 1.0,
+                        ),
+                        _buildSignInBtnGoogle()
                       ],
                     ),
                   ),

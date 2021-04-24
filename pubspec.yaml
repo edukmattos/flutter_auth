@@ -24,6 +24,8 @@ dependencies:
   flutter_mobx: ^2.0.0
   google_fonts: ^2.0.0
 
+  sign_button: ^2.0.0
+
   string_validator: ^0.3.0
   validators: ^3.0.0
   easy_localization: ^3.0.0

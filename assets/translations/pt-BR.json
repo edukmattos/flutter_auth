@@ -5,11 +5,19 @@
         },
         "sign_in": {
             "page_name": "Entrar"
-        }
+        },
+        "sign_in_google": "Entrar com Google"
     },
     "fields": {
         "email": "E-mail",
         "password": "Senha"
+    },
+    "buttons": {
+        "submit": "Enviar"
+    },
+    "texts": {
+        "forgot_password": "Esqueceu Senha ?",
+        "or": "ou"
     },
     "title": "Olaa",
     "msg": "Hello {} in the {} world ",
