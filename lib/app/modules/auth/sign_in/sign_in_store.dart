@@ -1,6 +1,7 @@
 import 'package:mobx/mobx.dart';
 import 'package:string_validator/string_validator.dart' as stringValidator;
 import 'package:validators/validators.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 part 'sign_in_store.g.dart';
 
@@ -30,13 +31,13 @@ abstract class _SignInStoreBase with Store {
   String? validateEmail() {
     var isValid = isNull(email);
     if (isValid) {
-      return "Obrigatório";
+      return 'fields.warning_msg.required'.tr();
     } else {
       var isValid = stringValidator.isEmail(email);
       if (isValid) {
         return null;
       } else {
-        return "Inválido";
+        return 'fields.error_msg.invalid'.tr();
       }
     }
   }
@@ -44,14 +45,14 @@ abstract class _SignInStoreBase with Store {
   String? validatePassword() {
     var isValid = isNull(password);
     if (isValid) {
-      return "Obrigatório";
+      return 'fields.warning_msg.required'.tr();
     } else {
-      var lenght = 8;
+      var lenght = 18;
       var isValid = stringValidator.isLength(password, lenght);
       if (isValid) {
         return null;
       } else {
-        return "Mín: $lenght digitos";
+        return 'fields.warning_msg.min'.tr(args: [lenght.toString()]);
       }
     }
   }

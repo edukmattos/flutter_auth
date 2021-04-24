@@ -10,7 +10,14 @@
     },
     "fields": {
         "email": "E-mail",
-        "password": "Senha"
+        "password": "Senha",
+        "error_msg": {
+            "invalid": "Inválido"
+        },
+        "warning_msg": {
+            "required": "Obrigatório",
+            "min": "Mín. {} digitos"
+        }
     },
     "buttons": {
         "submit": "Enviar"

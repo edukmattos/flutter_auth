@@ -10,7 +10,13 @@
     },
     "fields": {
         "email": "email",
-        "password": "Password"
+        "password": "Password",
+        "error_msg": {
+            "invalid": "Invalid"
+        },"warning_msg": {
+            "required": "Required",
+            "min": "Mín. {} digits"
+        }
     },
     "buttons": {
         "submit": "Send"
