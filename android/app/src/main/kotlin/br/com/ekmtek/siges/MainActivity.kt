@@ -1,4 +1,4 @@
-package com.example.flutter_auth
+package br.com.ekmtek.siges
 
 import io.flutter.embedding.android.FlutterActivity
 
