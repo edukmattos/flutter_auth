@@ -1,12 +1,12 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_auth/app/config/theme/app_config_colors.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:easy_localization/easy_localization.dart';
 import 'package:sign_button/sign_button.dart';
 
-import '../../../config/theme/fonts.dart';
+import '../../../core/config/theme/app_config_colors.dart';
+import '../../../core/config/theme/fonts.dart';
 import 'sign_in_store.dart';
 
 class SignInPage extends StatefulWidget {
@@ -251,8 +251,8 @@ class SignInPageState extends ModularState<SignInPage, SignInStore> {
               buttonType: ButtonType.google,
               buttonSize: ButtonSize.large, // small(default), medium, large
               //btnText: 'auth.sign_in_google'.tr(),
-              onPressed: () {
-                print('click');
+              onPressed: () async {
+                await controller.storeGoogleSignIn();
               },
             ),
           ),

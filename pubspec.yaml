@@ -30,7 +30,7 @@ dependencies:
   validators: ^3.0.0
   easy_localization: ^3.0.0
 
-  google_sign_in: "^4.5.1"
+  google_sign_in: ^5.0.2
   firebase_core: ^1.0.4
   firebase_auth: ^1.1.1
 

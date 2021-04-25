@@ -4,7 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
-import '../../../config/theme/fonts.dart';
+import '../../../core/config/theme/fonts.dart';
 import 'sign_up_store.dart';
 
 class SignUpPage extends StatefulWidget {

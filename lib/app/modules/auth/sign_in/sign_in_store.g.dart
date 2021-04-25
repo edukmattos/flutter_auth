@@ -47,6 +47,14 @@ mixin _$SignInStore on _SignInStoreBase, Store {
     });
   }
 
+  final _$storeGoogleSignInAsyncAction =
+      AsyncAction('_SignInStoreBase.storeGoogleSignIn');
+
+  @override
+  Future<void> storeGoogleSignIn() {
+    return _$storeGoogleSignInAsyncAction.run(() => super.storeGoogleSignIn());
+  }
+
   final _$_SignInStoreBaseActionController =
       ActionController(name: '_SignInStoreBase');
 
