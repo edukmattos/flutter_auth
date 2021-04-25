@@ -17,8 +17,6 @@ class SignInPage extends StatefulWidget {
 }
 
 class SignInPageState extends ModularState<SignInPage, SignInStore> {
-  final _scaffoldKey = GlobalKey<FormState>();
-
   Widget _buildEmailTF() {
     return Observer(
       name: 'observerEmail',
@@ -185,18 +183,18 @@ class SignInPageState extends ModularState<SignInPage, SignInStore> {
         return Container(
           padding: EdgeInsets.symmetric(vertical: 25.0),
           width: double.infinity,
-          child: RaisedButton(
-            elevation: 5.0,
+          child: ElevatedButton(
+            //elevation: 5.0,
             onPressed: controller.isFormValid
                 ? () {
-                    print("OK");
+                    Modular.to.pushNamed('/home');
                   }
                 : null,
-            padding: EdgeInsets.all(10.0),
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(5.0),
-            ),
-            color: Colors.blue,
+            //padding: EdgeInsets.all(10.0),
+            //shape: RoundedRectangleBorder(
+            //  borderRadius: BorderRadius.circular(5.0),
+            //),
+            //color: Colors.blue,
             child: Text(
               'buttons.submit'.tr(),
               style: kLightButtonTextStyle20,
