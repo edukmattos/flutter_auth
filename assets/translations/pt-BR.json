@@ -6,7 +6,12 @@
         "sign_in": {
             "page_name": "Entrar"
         },
-        "sign_in_google": "Entrar com Google"
+        "sign_in_google": {
+            "text": "Entrar com Google",
+            "errors": {
+                "user_disabled": "Usuario desabilitado"
+            }
+        }
     },
     "fields": {
         "email": "E-mail",
