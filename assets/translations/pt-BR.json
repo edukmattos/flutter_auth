@@ -9,6 +9,9 @@
         "sign_in_google": {
             "text": "Entrar com Google"
         },
+        "password_reset": {
+            "page_name": "Recuperar Senha"
+        },
         "errors": {
             "user_disabled": "Conta Desabilitada.",
             "wrong_password": "Senha incorreta.",

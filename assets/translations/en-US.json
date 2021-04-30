@@ -9,6 +9,9 @@
         "sign_in_google": {
             "text": "Login with Google"
         },
+        "password_reset": {
+            "page_name": "Password Reset"
+        },
         "errors": {
             "user_disabled": "Account Disabled.",
             "wrong_password": "Password wrong.",
