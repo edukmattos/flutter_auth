@@ -4,6 +4,8 @@ import 'package:flutter/services.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:sign_button/sign_button.dart';
+import 'package:top_snackbar_flutter/custom_snack_bar.dart';
+import 'package:top_snackbar_flutter/top_snack_bar.dart';
 
 import '../../../core/config/theme/app_config_colors.dart';
 import '../../../core/config/theme/fonts.dart';
@@ -252,7 +254,16 @@ class SignInPageState extends ModularState<SignInPage, SignInStore> {
               buttonSize: ButtonSize.large, // small(default), medium, large
               //btnText: 'auth.sign_in_google'.tr(),
               onPressed: () async {
-                await controller.storeGoogleSignIn();
+                await controller.authStoreGoogleSignIn().catchError(
+                  (error) {
+                    showTopSnackBar(
+                      context,
+                      CustomSnackBar.error(
+                        message: error.message,
+                      ),
+                    );
+                  },
+                );
               },
             ),
           ),
@@ -274,6 +285,23 @@ class SignInPageState extends ModularState<SignInPage, SignInStore> {
       ),
     );
   }
+
+  //Widget _showErrorMessage() {
+  //    if (_errorMessage.length > 0 && _errorMessage != null) {
+  //      return new Text(
+  //        _errorMessage,
+  //        style: TextStyle(
+  //            fontSize: 13.0,
+  //            color: Colors.red,
+  //            height: 1.0,
+  //            fontWeight: FontWeight.w300),
+  //      );
+  //    } else {
+  //      return new Container(
+  //        height: 0.0,
+  //      );
+  //    }
+  //  }
 
   @override
   Widget build(BuildContext context) {

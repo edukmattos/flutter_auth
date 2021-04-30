@@ -1,6 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:easy_localization/easy_localization.dart';
+
+import '../../../core/errors/auth_sign_in_error_interceptor.dart';
+import '../../../core/responses/response_builder.dart';
+import '../../../core/responses/response_default.dart';
 
 class AuthRepository {
   final FirebaseAuth _auth = FirebaseAuth.instance;
@@ -12,16 +15,15 @@ class AuthRepository {
     ],
   );
 
-  Future<void> signInWithGoogle() async {
+  Future<DefaultResponse> signInWithGoogle() async {
     GoogleSignInAccount googleUser;
-    String msg = "";
     try {
       googleUser = (await _googleSignIn.signIn())!;
       // ignore: unnecessary_null_comparison
-      if (googleUser == null) {
-        // user canceled the sign-in, do your cancellation logic here.
-        return;
-      }
+      //if (googleUser == null) {
+      // user canceled the sign-in, do your cancellation logic here.
+      //  return;
+      //}
       GoogleSignInAuthentication googleAuth = await googleUser.authentication;
       OAuthCredential credential = GoogleAuthProvider.credential(
         accessToken: googleAuth.accessToken,
@@ -30,31 +32,37 @@ class AuthRepository {
       var user = await _auth.signInWithCredential(credential);
       print('Google Sign-In completed!');
       print(user);
+
+      return ResponseBuilder.success<User>(
+        object: _auth.currentUser,
+        message: "Logado com sucesso !",
+      );
     } on FirebaseAuthException catch (e) {
-      switch (e.code) {
-        case 'user-disabled':
-          //print('Google Sign-In error: User disabled');
-          msg = tr('auth.sign_in_google.errors.user_disabled');
-          print(msg);
-          break;
-        case 'ERROR_ACCOUNT_EXISTS_WITH_DIFFERENT_CREDENTIAL':
-          print(
-              'Google Sign-In error: Account already exists with a different credential.');
-          break;
-        case 'ERROR_INVALID_CREDENTIAL':
-          print('Google Sign-In error: Invalid credential.');
-          break;
-        case 'ERROR_OPERATION_NOT_ALLOWED':
-          print('Google Sign-In error: Operation not allowed.');
-          break;
-        default:
-          print('Google Sign-In error');
-          break;
-      }
-      print(e);
-    } catch (e) {
-      print('Google Sign-In error EEE');
-      print(e);
+      //print(e.code);
+      return ResponseBuilder.failed(
+        object: e,
+        message: e.code,
+        errorInterceptor: AuthSignInErrorInterceptor(e.code),
+      );
+    }
+  }
+
+  Future<DefaultResponse> signInEmailPassword(
+      {required String email, required String password}) async {
+    try {
+      await _auth.signInWithEmailAndPassword(
+        email: email.trim(),
+        password: password.trim(),
+      );
+      return ResponseBuilder.success<User>(
+        object: _auth.currentUser,
+      );
+    } on Exception catch (e) {
+      return ResponseBuilder.failed(
+        object: e,
+        message: e.toString(),
+        errorInterceptor: AuthSignInErrorInterceptor(e.toString()),
+      );
     }
   }
 

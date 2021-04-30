@@ -47,12 +47,23 @@ mixin _$SignInStore on _SignInStoreBase, Store {
     });
   }
 
-  final _$storeGoogleSignInAsyncAction =
-      AsyncAction('_SignInStoreBase.storeGoogleSignIn');
+  final _$authStoreGoogleSignInAsyncAction =
+      AsyncAction('_SignInStoreBase.authStoreGoogleSignIn');
 
   @override
-  Future<void> storeGoogleSignIn() {
-    return _$storeGoogleSignInAsyncAction.run(() => super.storeGoogleSignIn());
+  Future<void> authStoreGoogleSignIn() {
+    return _$authStoreGoogleSignInAsyncAction
+        .run(() => super.authStoreGoogleSignIn());
+  }
+
+  final _$authStoreEmailPasswordSignInAsyncAction =
+      AsyncAction('_SignInStoreBase.authStoreEmailPasswordSignIn');
+
+  @override
+  Future<void> authStoreEmailPasswordSignIn(
+      {required String email, required String password}) {
+    return _$authStoreEmailPasswordSignInAsyncAction.run(() =>
+        super.authStoreEmailPasswordSignIn(email: email, password: password));
   }
 
   final _$_SignInStoreBaseActionController =

@@ -7,10 +7,10 @@
             "page_name": "Sign In"
         },
         "sign_in_google": {
-            "text": "Login with Google",
-            "errors": {
-                "user_disabled": "User disabled"
-            }
+            "text": "Login with Google"
+        },
+        "errors": {
+            "user_disabled": "Account Disabled "
         }
     },
     "fields": {

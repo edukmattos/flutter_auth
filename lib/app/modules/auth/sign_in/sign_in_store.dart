@@ -69,13 +69,32 @@ abstract class _SignInStoreBase with Store {
   }
 
   @action
-  Future<void> storeGoogleSignIn() async {
+  Future<void> authStoreGoogleSignIn() async {
     await authRepository.signInWithGoogle().then((response) {
-      //if (response.success) {
-      Modular.to.pushNamed('/home');
-      //} else {
-      // throw response;
-      //}
+      if (response.success) {
+        Modular.to.pushNamed('/home');
+      } else {
+        throw response;
+      }
+    });
+  }
+
+  @action
+  Future<void> authStoreEmailPasswordSignIn({
+    required String email,
+    required String password,
+  }) async {
+    await authRepository
+        .signInEmailPassword(
+      email: email.trim(),
+      password: password.trim(),
+    )
+        .then((response) {
+      if (response.success) {
+        Modular.to.pushNamed('/home');
+      } else {
+        throw response;
+      }
     });
   }
 }

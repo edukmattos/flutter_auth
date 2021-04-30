@@ -1,6 +1,6 @@
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:flutter_auth/app/modules/auth/sign_up/sign_up_page.dart';
 
+import 'sign_up_page.dart';
 import 'sign_up_repository.dart';
 import 'sign_up_store.dart';
 
