@@ -290,7 +290,7 @@ class SignInPageState extends ModularState<SignInPage, SignInStore> {
     return Container(
       alignment: Alignment.centerRight,
       child: FlatButton(
-        onPressed: () => print('Forgot Password Button Pressed'),
+        onPressed: () => Modular.to.pushNamed('/password_reset'),
         padding: EdgeInsets.only(right: 0.0),
         child: Text(
           'texts.forgot_password'.tr(),

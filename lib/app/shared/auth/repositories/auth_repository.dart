@@ -68,5 +68,23 @@ class AuthRepository {
     }
   }
 
+  Future<DefaultResponse> passwordReset(String email) async {
+    try {
+      await _auth.sendPasswordResetEmail(
+        email: email.trim(),
+      );
+      return ResponseBuilder.success<User>(
+        object: _auth.currentUser,
+      );
+    } on FirebaseAuthException catch (e) {
+      print(e.code);
+      return ResponseBuilder.failed(
+        object: e,
+        message: e.code,
+        errorInterceptor: AuthErrorInterceptor(e.code),
+      );
+    }
+  }
+
   Future<void> signOutWithGoogle() => _googleSignIn.disconnect();
 }
