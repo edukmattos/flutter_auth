@@ -10,7 +10,9 @@
             "text": "Login with Google"
         },
         "errors": {
-            "user_disabled": "Account Disabled "
+            "user_disabled": "Account Disabled.",
+            "wrong_password": "Password wrong.",
+            "user_not_found": "Account NOT found."
         }
     },
     "fields": {

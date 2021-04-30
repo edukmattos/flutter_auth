@@ -47,8 +47,10 @@ class AuthRepository {
     }
   }
 
-  Future<DefaultResponse> signInEmailPassword(
-      {required String email, required String password}) async {
+  Future<DefaultResponse> signInEmailPassword({
+    required String email,
+    required String password,
+  }) async {
     try {
       await _auth.signInWithEmailAndPassword(
         email: email.trim(),
@@ -57,11 +59,11 @@ class AuthRepository {
       return ResponseBuilder.success<User>(
         object: _auth.currentUser,
       );
-    } on Exception catch (e) {
+    } on FirebaseAuthException catch (e) {
       return ResponseBuilder.failed(
         object: e,
-        message: e.toString(),
-        errorInterceptor: AuthSignInErrorInterceptor(e.toString()),
+        message: e.code,
+        errorInterceptor: AuthSignInErrorInterceptor(e.code),
       );
     }
   }

@@ -10,7 +10,9 @@
             "text": "Entrar com Google"
         },
         "errors": {
-            "user_disabled": "Conta Desabilitada"
+            "user_disabled": "Conta Desabilitada.",
+            "wrong_password": "Senha incorreta.",
+            "user_not_found": "Conta NÃO localizada."
         }
     },    
     "fields": {
@@ -29,7 +31,7 @@
     },
     "texts": {
         "forgot_password": "Esqueceu Senha ?",
-        "or": "ou entrar com"
+        "or": "ou entre com"
     },
     "title": "Olaa",
     "msg": "Hello {} in the {} world ",

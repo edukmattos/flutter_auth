@@ -13,12 +13,13 @@ class AuthSignInErrorInterceptor implements IErrorInterceptor {
         var msg = tr('auth.errors.user_disabled');
         return msg;
 
-      case 'user-not-found':
-        //authStatus = AuthStatus.successful;
-        return 'Acho que essa senha está muito curta, tente uma maior ! ';
-
       case 'wrong-password':
-        return 'Ops! Esse email é inválido ! ';
+        var msg = tr('auth.errors.wrong_password');
+        return msg;
+
+      case 'user-not-found':
+        var msg = tr('auth.errors.user_not_found');
+        return msg;
 
       case 'operation-not-allowed':
         return 'Esse email já está cadastrado, '

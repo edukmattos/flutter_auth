@@ -188,8 +188,22 @@ class SignInPageState extends ModularState<SignInPage, SignInStore> {
           child: ElevatedButton(
             //elevation: 5.0,
             onPressed: controller.isFormValid
-                ? () {
-                    Modular.to.pushNamed('/home');
+                ? () async {
+                    controller
+                        .authStoreEmailPasswordSignIn(
+                      email: controller.email,
+                      password: controller.password,
+                    )
+                        .catchError(
+                      (error) {
+                        showTopSnackBar(
+                          context,
+                          CustomSnackBar.error(
+                            message: error.message,
+                          ),
+                        );
+                      },
+                    );
                   }
                 : null,
             //padding: EdgeInsets.all(10.0),
