@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
-import '../../../core/errors/auth_sign_in_error_interceptor.dart';
+import '../../../core/errors/auth_error_interceptor.dart';
 import '../../../core/responses/response_builder.dart';
 import '../../../core/responses/response_default.dart';
 
@@ -42,7 +42,7 @@ class AuthRepository {
       return ResponseBuilder.failed(
         object: e,
         message: e.code,
-        errorInterceptor: AuthSignInErrorInterceptor(e.code),
+        errorInterceptor: AuthErrorInterceptor(e.code),
       );
     }
   }
@@ -63,7 +63,7 @@ class AuthRepository {
       return ResponseBuilder.failed(
         object: e,
         message: e.code,
-        errorInterceptor: AuthSignInErrorInterceptor(e.code),
+        errorInterceptor: AuthErrorInterceptor(e.code),
       );
     }
   }
