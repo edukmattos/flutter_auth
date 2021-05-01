@@ -1,4 +1,7 @@
 {
+    "app": {
+        "name_short": "SiGeS"
+    },
     "auth":{
         "sign_up": {
             "page_name": "Registro"
@@ -39,6 +42,14 @@
     "texts": {
         "forgot_password": "Esqueceu Senha ?",
         "or": "ou entre com"
+    },
+    "modules": {
+        "clients": {
+            "name": "Clientes"
+        },
+        "settings": {
+            "name": "Ajustes"
+        }
     },
     "title": "Olaa",
     "msg": "Hello {} in the {} world ",

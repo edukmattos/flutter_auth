@@ -307,7 +307,25 @@ class SignUpPageState extends ModularState<SignUpPage, SignUpStore> {
 
   @override
   Widget build(BuildContext context) {
+    var appBar = AppBar(
+      title: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Text('auth.sign_in.page_name').tr(),
+          Visibility(
+            visible: true,
+            child: Text(
+              ('app.name_short').tr(),
+              style: TextStyle(fontSize: 12.0),
+            ),
+          )
+        ],
+      ),
+    );
+
     return Scaffold(
+      appBar: appBar,
       backgroundColor: Color(0xFF61A8EB),
       body: SafeArea(
         child: Center(

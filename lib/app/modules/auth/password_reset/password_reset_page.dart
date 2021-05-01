@@ -10,9 +10,7 @@ import '../../../core/config/theme/fonts.dart';
 import 'password_reset_store.dart';
 
 class PasswordResetPage extends StatefulWidget {
-  final String title;
-  const PasswordResetPage({Key? key, this.title = "PasswordResetPage"})
-      : super(key: key);
+  const PasswordResetPage({Key? key}) : super(key: key);
   @override
   PasswordResetPageState createState() => PasswordResetPageState();
 }
@@ -143,7 +141,25 @@ class PasswordResetPageState
 
   @override
   Widget build(BuildContext context) {
+    var appBar = AppBar(
+      title: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Text('auth.sign_in.page_name').tr(),
+          Visibility(
+            visible: true,
+            child: Text(
+              ('app.name_short').tr(),
+              style: TextStyle(fontSize: 12.0),
+            ),
+          )
+        ],
+      ),
+    );
+
     return Scaffold(
+      appBar: appBar,
       backgroundColor: Color(0xFF61A8EB),
       body: SafeArea(
         child: Center(
