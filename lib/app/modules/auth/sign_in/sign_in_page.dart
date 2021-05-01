@@ -286,6 +286,28 @@ class SignInPageState extends ModularState<SignInPage, SignInStore> {
     );
   }
 
+  Widget _buildSignUpBtnEmail() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        Container(
+          alignment: Alignment.center,
+          //decoration: kBoxDecorationStyleLight,
+          height: kDefaultPadding * 2.5,
+          child: Padding(
+            padding: EdgeInsets.only(top: kDefaultPadding * 0.00),
+            child: SignInButton.mini(
+              buttonType: ButtonType.mail,
+              buttonSize: ButtonSize.large, // small(default), medium, large
+              //btnText: 'auth.sign_in_google'.tr(),
+              onPressed: () => Modular.to.pushNamed('/sign_up'),
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+
   Widget _buildForgotPasswordBtn() {
     return Container(
       alignment: Alignment.centerRight,
@@ -355,7 +377,13 @@ class SignInPageState extends ModularState<SignInPage, SignInStore> {
                   SizedBox(
                     height: kDefaultPadding * 1.0,
                   ),
-                  _buildSignInBtnGoogle()
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      _buildSignUpBtnEmail(),
+                      _buildSignInBtnGoogle(),
+                    ],
+                  ),
                 ],
               ),
             ),

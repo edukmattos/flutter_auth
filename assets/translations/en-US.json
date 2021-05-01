@@ -15,17 +15,21 @@
         "errors": {
             "user_disabled": "Account Disabled.",
             "wrong_password": "Password wrong.",
-            "user_not_found": "Account NOT found."
+            "user_not_found": "Account NOT found.",
+            "too_many_requests": "Too many requests.",
+            "email_already_in_use": "Account NOT Avaliable"
         }
     },
     "fields": {
         "email": "email",
         "password": "Password",
+        "password_confirm": "Password Confirm",
         "error_msg": {
             "invalid": "Invalid"
         },"warning_msg": {
             "required": "Required",
-            "min": "Mín. {} digits"
+            "min": "Mín. {} digits",
+            "equals": "Different"
         }
     },
     "buttons": {

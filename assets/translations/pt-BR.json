@@ -15,18 +15,22 @@
         "errors": {
             "user_disabled": "Conta Desabilitada.",
             "wrong_password": "Senha incorreta.",
-            "user_not_found": "Conta NÃO localizada."
+            "user_not_found": "Conta NÃO localizada.",
+            "too_many_requests": "Excesso de Requisições.",
+            "email_already_in_use": "Conta Indisponível"
         }
     },    
     "fields": {
         "email": "E-mail",
         "password": "Senha",
+        "password_confirm": "Repetir senha",
         "error_msg": {
             "invalid": "Inválido"
         },
         "warning_msg": {
             "required": "Obrigatório",
-            "min": "Mín. {} digitos"
+            "min": "Mín. {} digitos",
+            "equals": "Diferente"
         }
     },
     "buttons": {

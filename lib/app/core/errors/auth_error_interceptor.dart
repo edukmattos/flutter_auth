@@ -21,6 +21,14 @@ class AuthErrorInterceptor implements IErrorInterceptor {
         var msg = tr('auth.errors.user_not_found');
         return msg;
 
+      case 'too-many-requests':
+        var msg = tr('auth.errors.too_many_requests');
+        return msg;
+
+      case 'email-already-in-use':
+        var msg = tr('auth.errors.email_already_in_use');
+        return msg;
+
       case 'operation-not-allowed':
         return 'Esse email já está cadastrado, '
             'se já tem uma conta basta fazer o login!';
@@ -41,8 +49,18 @@ class AuthErrorInterceptor implements IErrorInterceptor {
         return 'Esse email já está cadastrado, '
             'se já tem uma conta basta fazer o login!';
 
+      case 'weak-password':
+        return 'Acho que essa senha está muito curta, tente uma maior!';
+
+      case 'invalid-email':
+        return 'Ops! Esse email é inválido!';
+
+      case 'operation-not-allowed':
+        return 'Esse email já está cadastrado,'
+            'se já tem uma conta basta fazer o login!';
+
       default:
-        return 'Não foi possível realizar o registro, '
+        return 'Não foi possível realizar o registro,'
             'tente novamente mais tarde.';
     }
   }

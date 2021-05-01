@@ -70,7 +70,7 @@ abstract class _SignInStoreBase with Store {
 
   @action
   Future<void> authStoreGoogleSignIn() async {
-    await authRepository.signInWithGoogle().then((response) {
+    await authRepository.authRepoSignInWithGoogle().then((response) {
       if (response.success) {
         Modular.to.pushNamed('/home');
       } else {
@@ -85,7 +85,7 @@ abstract class _SignInStoreBase with Store {
     required String password,
   }) async {
     await authRepository
-        .signInEmailPassword(
+        .authRepoSignInEmailPassword(
       email: email.trim(),
       password: password.trim(),
     )

@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 import '../../../core/errors/auth_error_interceptor.dart';
@@ -15,7 +16,7 @@ class AuthRepository {
     ],
   );
 
-  Future<DefaultResponse> signInWithGoogle() async {
+  Future<DefaultResponse> authRepoSignInWithGoogle() async {
     GoogleSignInAccount googleUser;
     try {
       googleUser = (await _googleSignIn.signIn())!;
@@ -47,7 +48,7 @@ class AuthRepository {
     }
   }
 
-  Future<DefaultResponse> signInEmailPassword({
+  Future<DefaultResponse> authRepoSignInEmailPassword({
     required String email,
     required String password,
   }) async {
@@ -58,6 +59,7 @@ class AuthRepository {
       );
       return ResponseBuilder.success<User>(
         object: _auth.currentUser,
+        message: "OK",
       );
     } on FirebaseAuthException catch (e) {
       return ResponseBuilder.failed(
@@ -68,16 +70,39 @@ class AuthRepository {
     }
   }
 
-  Future<DefaultResponse> passwordReset(String email) async {
+  Future<DefaultResponse> authRepoPasswordReset(String email) async {
     try {
       await _auth.sendPasswordResetEmail(
         email: email.trim(),
       );
+      Modular.to.pushNamed('/sign_in');
       return ResponseBuilder.success<User>(
         object: _auth.currentUser,
       );
     } on FirebaseAuthException catch (e) {
       print(e.code);
+      return ResponseBuilder.failed(
+        object: e,
+        message: e.code,
+        errorInterceptor: AuthErrorInterceptor(e.code),
+      );
+    }
+  }
+
+  Future<DefaultResponse> authRepoSignUpEmailPassword(
+      {required String email, required String password}) async {
+    try {
+      return await _auth
+          .createUserWithEmailAndPassword(
+        email: email.trim(),
+        password: password.trim(),
+      )
+          .then((user) {
+        return ResponseBuilder.success<User>(
+          object: _auth.currentUser,
+        );
+      });
+    } on FirebaseAuthException catch (e) {
       return ResponseBuilder.failed(
         object: e,
         message: e.code,

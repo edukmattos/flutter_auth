@@ -49,7 +49,7 @@ abstract class _PasswordResetStoreBase with Store {
 
   @action
   Future<void> passwordResetStorePasswordReset({required String email}) async {
-    await authRepository.passwordReset(email).then((response) {
+    await authRepository.authRepoPasswordReset(email).then((response) {
       if (response.success) {
         Modular.to.pushNamed('/sign_in');
       } else {

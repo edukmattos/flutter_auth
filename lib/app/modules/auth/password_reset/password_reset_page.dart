@@ -106,7 +106,15 @@ class PasswordResetPageState
                     controller
                         .passwordResetStorePasswordReset(
                             email: controller.email.trim())
-                        .catchError(
+                        .then((response) {
+                      print("ok");
+                      showTopSnackBar(
+                        context,
+                        CustomSnackBar.success(
+                          message: "WWWWW",
+                        ),
+                      );
+                    }).catchError(
                       (error) {
                         showTopSnackBar(
                           context,

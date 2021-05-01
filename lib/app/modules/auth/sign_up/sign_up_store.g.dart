@@ -47,6 +47,31 @@ mixin _$SignUpStore on _SignUpStoreBase, Store {
     });
   }
 
+  final _$passwordConfirmAtom = Atom(name: '_SignUpStoreBase.passwordConfirm');
+
+  @override
+  String get passwordConfirm {
+    _$passwordConfirmAtom.reportRead();
+    return super.passwordConfirm;
+  }
+
+  @override
+  set passwordConfirm(String value) {
+    _$passwordConfirmAtom.reportWrite(value, super.passwordConfirm, () {
+      super.passwordConfirm = value;
+    });
+  }
+
+  final _$signUpStoreEmailPassordAsyncAction =
+      AsyncAction('_SignUpStoreBase.signUpStoreEmailPassord');
+
+  @override
+  Future<void> signUpStoreEmailPassord(
+      {required String email, required String password}) {
+    return _$signUpStoreEmailPassordAsyncAction.run(
+        () => super.signUpStoreEmailPassord(email: email, password: password));
+  }
+
   final _$_SignUpStoreBaseActionController =
       ActionController(name: '_SignUpStoreBase');
 
@@ -73,10 +98,22 @@ mixin _$SignUpStore on _SignUpStoreBase, Store {
   }
 
   @override
+  dynamic changePasswordConfirm(String value) {
+    final _$actionInfo = _$_SignUpStoreBaseActionController.startAction(
+        name: '_SignUpStoreBase.changePasswordConfirm');
+    try {
+      return super.changePasswordConfirm(value);
+    } finally {
+      _$_SignUpStoreBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   String toString() {
     return '''
 email: ${email},
 password: ${password},
+passwordConfirm: ${passwordConfirm},
 isFormValid: ${isFormValid}
     ''';
   }
