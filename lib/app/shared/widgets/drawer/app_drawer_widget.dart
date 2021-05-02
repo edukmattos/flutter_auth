@@ -41,21 +41,44 @@ class AppDrawerWidget extends StatelessWidget {
               ),
             ),
             Container(
-                child: Align(
-                    alignment: FractionalOffset.bottomCenter,
-                    child: Column(
-                      children: <Widget>[
-                        Divider(),
-                        ListTile(
-                          leading: Icon(Icons.settings),
-                          title: Text('modules.settings.name').tr(),
-                        ),
-                        ListTile(
-                          leading: Icon(Icons.help),
-                          title: Text('Instagram'),
-                        )
-                      ],
-                    ))),
+              child: Align(
+                alignment: FractionalOffset.bottomCenter,
+                child: Column(
+                  children: <Widget>[
+                    Divider(),
+                    appDrawerItemWidget(
+                        icon: Icons.settings,
+                        text: tr('modules.settings.name'),
+                        onTap: () {
+                          Modular.to.pushNamed('/settings');
+                        }),
+                    ListTile(
+                      leading: Icon(Icons.help),
+                      title: Text('Instagram'),
+                    )
+                  ],
+                ),
+              ),
+            ),
+            Container(
+              child: Column(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(top: 22, bottom: 8),
+                    child: Image.asset(
+                      'assets/images/logos/app_logo.png',
+                      height: 30,
+                      width: 30,
+                      //color: Color(0xFF777777),
+                    ),
+                  ),
+                  Text(
+                    'Version: 2.4.0 (287)',
+                    style: TextStyle(color: Color(0xFF777777)),
+                  ),
+                ],
+              ),
+            )
           ],
         ),
       ),
