@@ -35,6 +35,8 @@ dependencies:
   firebase_auth: ^1.1.1
   top_snackbar_flutter: ^1.0.0
 
+  settings_ui: ^1.0.0
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -45,4 +47,4 @@ flutter:
   uses-material-design: true
   assets:
     - assets/translations/
-    - assets/images/logos/
+    - assets/images/
