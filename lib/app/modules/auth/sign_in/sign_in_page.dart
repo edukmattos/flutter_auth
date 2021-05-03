@@ -38,7 +38,7 @@ class SignInPageState extends ModularState<SignInPage, SignInStore> {
               decoration: kBoxDecorationStyle,
               height: kDefaultPadding * 2.5,
               child: TextFormField(
-                autofocus: true,
+                autofocus: false,
                 onChanged: controller.changeEmail,
                 keyboardType: TextInputType.emailAddress,
                 style: TextStyle(color: Colors.white),
