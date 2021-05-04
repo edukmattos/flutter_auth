@@ -29,8 +29,8 @@ class ResponseBuilder {
     //  message = errorInterceptor.handleError(message);
     //}
     return DefaultResponse<T>(
-      object: object!,
-      message: message!,
+      object: object,
+      message: message,
       status: ResponseStatus.rsSuccess,
     );
   }

@@ -13,7 +13,8 @@
             "text": "Login with Google"
         },
         "password_reset": {
-            "page_name": "Password Reset"
+            "page_name": "Password Reset",
+            "success": "Check your email box for the instructions"
         },
         "errors": {
             "user_disabled": "Account Disabled.",

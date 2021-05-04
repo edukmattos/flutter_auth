@@ -109,7 +109,7 @@ class PasswordResetPageState
                       showTopSnackBar(
                         context,
                         CustomSnackBar.success(
-                          message: "WWWWW",
+                          message: tr('auth.password_reset.success'),
                         ),
                       );
                     }).catchError(

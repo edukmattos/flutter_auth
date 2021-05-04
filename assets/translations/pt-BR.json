@@ -13,7 +13,8 @@
             "text": "Entrar com Google"
         },
         "password_reset": {
-            "page_name": "Recuperar Senha"
+            "page_name": "Recuperar Senha",
+            "success": "Verifique a sua caixa de entrada de e-mails"
         },
         "errors": {
             "user_disabled": "Conta Desabilitada.",

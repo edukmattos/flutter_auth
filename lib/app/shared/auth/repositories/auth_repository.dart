@@ -59,7 +59,7 @@ class AuthRepository {
       );
       return ResponseBuilder.success<User>(
         object: _auth.currentUser,
-        message: "OK",
+        message: "Email enviado com sucesso !",
       );
     } on FirebaseAuthException catch (e) {
       return ResponseBuilder.failed(
