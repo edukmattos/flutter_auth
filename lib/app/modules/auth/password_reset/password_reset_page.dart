@@ -105,11 +105,10 @@ class PasswordResetPageState
                         .passwordResetStorePasswordReset(
                             email: controller.email.trim())
                         .then((response) {
-                      print("ok");
                       showTopSnackBar(
                         context,
                         CustomSnackBar.success(
-                          message: tr('auth.password_reset.success'),
+                          message: tr('auth.success.password_reset'),
                         ),
                       );
                     }).catchError(

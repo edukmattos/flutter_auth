@@ -13,8 +13,7 @@
             "text": "Login with Google"
         },
         "password_reset": {
-            "page_name": "Password Reset",
-            "success": "Check your email box for the instructions"
+            "page_name": "Password Reset"
         },
         "errors": {
             "user_disabled": "Account Disabled.",
@@ -22,6 +21,10 @@
             "user_not_found": "Account NOT found.",
             "too_many_requests": "Too many requests.",
             "email_already_in_use": "Account NOT Avaliable"
+        },
+        "success": {
+            "password_reset": "Check your email box for the instructions",
+            "sign_in": "Your Welcome"
         }
     },
     "fields": {

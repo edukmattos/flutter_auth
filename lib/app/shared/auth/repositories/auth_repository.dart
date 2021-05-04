@@ -37,7 +37,6 @@ class AuthRepository implements IAuthRepository {
 
       return ResponseBuilder.success<User>(
         object: _auth.currentUser,
-        message: "Logado com sucesso !",
       );
     } on FirebaseAuthException catch (e) {
       //print(e.code);

@@ -194,7 +194,15 @@ class SignInPageState extends ModularState<SignInPage, SignInStore> {
                       email: controller.email,
                       password: controller.password,
                     )
-                        .catchError(
+                        .then((response) {
+                      print("ok");
+                      showTopSnackBar(
+                        context,
+                        CustomSnackBar.success(
+                          message: tr('auth.password_reset.success'),
+                        ),
+                      );
+                    }).catchError(
                       (error) {
                         showTopSnackBar(
                           context,
@@ -268,7 +276,14 @@ class SignInPageState extends ModularState<SignInPage, SignInStore> {
               buttonSize: ButtonSize.large, // small(default), medium, large
               //btnText: 'auth.sign_in_google'.tr(),
               onPressed: () async {
-                await controller.authStoreGoogleSignIn().catchError(
+                await controller.authStoreGoogleSignIn().then((response) {
+                  showTopSnackBar(
+                    context,
+                    CustomSnackBar.success(
+                      message: tr('auth.success.sign_in'),
+                    ),
+                  );
+                }).catchError(
                   (error) {
                     showTopSnackBar(
                       context,

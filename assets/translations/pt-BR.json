@@ -13,8 +13,7 @@
             "text": "Entrar com Google"
         },
         "password_reset": {
-            "page_name": "Recuperar Senha",
-            "success": "Verifique a sua caixa de entrada de e-mails"
+            "page_name": "Recuperar Senha"
         },
         "errors": {
             "user_disabled": "Conta Desabilitada.",
@@ -22,6 +21,10 @@
             "user_not_found": "Conta NÃO localizada.",
             "too_many_requests": "Excesso de Requisições.",
             "email_already_in_use": "Conta Indisponível"
+        },
+        "success": {
+            "password_reset": "Verifique a sua caixa de entrada de e-mails",
+            "sign_in": "Bem Vindo"
         }
     },    
     "fields": {
