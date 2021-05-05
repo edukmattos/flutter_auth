@@ -24,7 +24,8 @@
         },
         "success": {
             "password_reset": "Verifique a sua caixa de entrada de e-mails",
-            "sign_in": "Bem Vindo"
+            "sign_in": "Bem Vindo",
+            "sign_up": "Bem Vindo"
         }
     },    
     "fields": {

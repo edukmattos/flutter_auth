@@ -278,7 +278,14 @@ class SignUpPageState extends ModularState<SignUpPage, SignUpStore> {
                       email: controller.email,
                       password: controller.password,
                     )
-                        .catchError(
+                        .then((response) {
+                      showTopSnackBar(
+                        context,
+                        CustomSnackBar.success(
+                          message: tr('auth.success.sign_up'),
+                        ),
+                      );
+                    }).catchError(
                       (error) {
                         showTopSnackBar(
                           context,

@@ -24,7 +24,8 @@
         },
         "success": {
             "password_reset": "Check your email box for the instructions",
-            "sign_in": "Your Welcome"
+            "sign_in": "Your Welcome",
+            "sign_up": "Your Welcome"
         }
     },
     "fields": {

@@ -98,6 +98,7 @@ class AuthRepository implements IAuthRepository {
         password: password.trim(),
       )
           .then((user) {
+        Modular.to.pushNamed('/home');
         return ResponseBuilder.success<User>(
           object: _auth.currentUser,
         );
