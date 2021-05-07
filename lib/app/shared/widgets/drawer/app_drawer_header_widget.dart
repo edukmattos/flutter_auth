@@ -26,8 +26,9 @@ Widget appDrawerHeaderWidget() {
                 style: TextStyle(fontSize: 14),
               ),
             ),
-            CircleAvatar(
-              child: Text('K'),
+            Text(
+              "Buy now".toUpperCase(),
+              style: TextStyle(fontSize: 14),
             ),
           ],
         ),
