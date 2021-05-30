@@ -17,124 +17,139 @@ class PasswordResetPage extends StatefulWidget {
 
 class PasswordResetPageState
     extends ModularState<PasswordResetPage, PasswordResetStore> {
+  final scaffoldKey = GlobalKey<ScaffoldState>();
+
   Widget _buildEmailTF() {
-    return Observer(
-      name: 'observerEmail',
-      builder: (_) {
-        return Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            //Text(
-            //  "Email",
-            //  style: kLabelStyle,
-            //),
-            SizedBox(
-              height: 5,
-            ),
-            Container(
-              alignment: Alignment.centerLeft,
-              decoration: kBoxDecorationStyle,
-              height: kDefaultPadding * 2.5,
-              child: TextFormField(
-                autofocus: true,
-                onChanged: controller.changeEmail,
-                keyboardType: TextInputType.emailAddress,
-                style: TextStyle(color: Colors.white),
-                decoration: InputDecoration(
-                  labelText: 'fields.email'.tr(),
-                  labelStyle: kLabelStyle,
-                  enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(
-                      color: Colors.transparent,
-                    ),
-                    borderRadius: BorderRadius.circular(10.0),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(
-                      color: Colors.white,
-                    ),
-                    borderRadius: BorderRadius.circular(10.0),
-                  ),
-                  contentPadding: EdgeInsets.only(
-                    top: 14,
-                  ),
-                  prefixIcon: Icon(
-                    Icons.email_outlined,
-                    color: Colors.white,
-                  ),
-                  suffixIcon: Padding(
-                    padding: EdgeInsetsDirectional.only(
-                      top: kDefaultPadding * 0.60,
-                      end: kDefaultPadding * 0.50,
-                    ),
-                    // ignore: unrelated_type_equality_checks
-                    child: controller.validateEmail() == null
-                        ? null
-                        : Text(
-                            controller.validateEmail()!,
-                            style: TextStyle(
-                              color: Colors.red,
-                              fontFamily: 'OpenSans',
-                              fontSize: 12,
-                            ),
-                          ),
-                  ),
-                  //hintText: "Entre com seu e-mail",
-                  //hintStyle: kHintTextStyle,
+    return Padding(
+      padding: EdgeInsets.fromLTRB(0, 12, 0, 0),
+      child: Row(
+        mainAxisSize: MainAxisSize.max,
+        children: [
+          Expanded(
+            child: Container(
+              width: 330,
+              height: 60,
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(8),
+                border: Border.all(
+                  color: Color(0xFFE6E6E6),
                 ),
               ),
+              child: Stack(
+                children: [
+                  Padding(
+                    padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
+                    child: Observer(
+                      name: 'observerEmail',
+                      builder: (_) {
+                        return TextFormField(
+                          obscureText: false,
+                          autofocus: false,
+                          onChanged: controller.changeEmail,
+                          keyboardType: TextInputType.emailAddress,
+                          style: kFontTextStyle15,
+                          decoration: InputDecoration(
+                            labelText: 'fields.email'.tr(),
+                            prefixIcon: Icon(
+                              Icons.email_outlined,
+                              color: Colors.black,
+                            ),
+                            suffixIcon: Padding(
+                              padding: EdgeInsetsDirectional.only(
+                                top: kDefaultPadding * 0.60,
+                                end: kDefaultPadding * 0.50,
+                              ),
+                              child: controller.validateEmail() == null
+                                  ? null
+                                  : Text(
+                                      controller.validateEmail()!,
+                                      style: TextStyle(
+                                        color: Colors.red,
+                                        fontFamily: 'OpenSans',
+                                        fontSize: 12,
+                                      ),
+                                    ),
+                            ),
+                            enabledBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(
+                                color: Colors.transparent,
+                                width: 1,
+                              ),
+                              borderRadius: const BorderRadius.only(
+                                topLeft: Radius.circular(4.0),
+                                topRight: Radius.circular(4.0),
+                              ),
+                            ),
+                            focusedBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(
+                                color: Colors.transparent,
+                                width: 1,
+                              ),
+                              borderRadius: const BorderRadius.only(
+                                topLeft: Radius.circular(4.0),
+                                topRight: Radius.circular(4.0),
+                              ),
+                            ),
+                          ),
+                        );
+                      },
+                    ),
+                  )
+                ],
+              ),
             ),
-          ],
-        );
-      },
+          ),
+        ],
+      ),
     );
   }
 
   Widget _buildSubmitBtn() {
-    return Observer(
-      name: 'submitButtonObserver',
-      builder: (_) {
-        return Container(
-          padding: EdgeInsets.symmetric(vertical: 25.0),
-          width: double.infinity,
-          child: ElevatedButton(
-            //elevation: 5.0,
-            onPressed: controller.isFormValid
-                ? () async {
-                    controller
-                        .passwordResetStorePasswordReset(
-                            email: controller.email.trim())
-                        .then((response) {
-                      showTopSnackBar(
-                        context,
-                        CustomSnackBar.success(
-                          message: tr('auth.success.password_reset'),
-                        ),
-                      );
-                    }).catchError(
-                      (error) {
-                        showTopSnackBar(
-                          context,
-                          CustomSnackBar.error(
-                            message: error.message,
-                          ),
+    return Expanded(
+      child: Align(
+        alignment: Alignment(1, 0),
+        child: Padding(
+          padding: EdgeInsets.fromLTRB(0, 16, 0, 0),
+          child: Observer(
+            name: 'submitButtonObserver',
+            builder: (_) {
+              return ElevatedButton(
+                onPressed: controller.isFormValid
+                    ? () async {
+                        controller
+                            .passwordResetStorePasswordReset(
+                                email: controller.email.trim())
+                            .then((response) {
+                          showTopSnackBar(
+                            context,
+                            CustomSnackBar.success(
+                              message: tr('auth.success.password_reset'),
+                            ),
+                          );
+                        }).catchError(
+                          (error) {
+                            showTopSnackBar(
+                              context,
+                              CustomSnackBar.error(
+                                message: error.message,
+                              ),
+                            );
+                          },
                         );
-                      },
-                    );
-                  }
-                : null,
-            //padding: EdgeInsets.all(10.0),
-            //shape: RoundedRectangleBorder(
-            //  borderRadius: BorderRadius.circular(5.0),
-            //),
-            //color: Colors.blue,
-            child: Text(
-              'buttons.submit'.tr(),
-              style: kLightButtonTextStyle20,
-            ),
+                      }
+                    : null,
+                child: Text(
+                  'buttons.submit'.tr(),
+                  style: kLightButtonTextStyle20,
+                ),
+                style: ElevatedButton.styleFrom(
+                    padding: EdgeInsets.all(12), minimumSize: Size(150, 50)),
+              );
+            },
           ),
-        );
-      },
+        ),
+      ),
     );
   }
 
@@ -145,48 +160,107 @@ class PasswordResetPageState
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          Text('auth.sign_in.page_name').tr(),
-          Visibility(
-            visible: true,
-            child: Text(
-              ('app.name_short').tr(),
-              style: TextStyle(fontSize: 12.0),
-            ),
-          )
+          Text('app.name_short').tr(),
+          //Visibility(
+          //  visible: true,
+          //  child: Text(
+          //    ('app.name_short').tr(),
+          //    style: TextStyle(fontSize: 12.0),
+          //  ),
+          //)
         ],
       ),
     );
 
     return Scaffold(
+      key: scaffoldKey,
       appBar: appBar,
-      backgroundColor: Color(0xFF61A8EB),
       body: SafeArea(
         child: Center(
           child: SingleChildScrollView(
-            padding: const EdgeInsets.all(8.0),
-            child: Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: <Widget>[
-                  SizedBox(
-                    height: 100.0,
-                    child: Image.asset(
-                      "assets/images/logos/app_logo.png",
-                      fit: BoxFit.contain,
+            child: Stack(
+              children: [
+                Align(
+                  alignment: Alignment(0, 0),
+                  child: Padding(
+                    padding: EdgeInsets.fromLTRB(
+                        kDefaultPadding * 1,
+                        kDefaultPadding * 0,
+                        kDefaultPadding * 1,
+                        kDefaultPadding * 0),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: [
+                        Align(
+                          alignment: Alignment(0, 0),
+                          child: Image.asset(
+                            "assets/images/logos/app_logo.png",
+                            width: kDefaultWidth,
+                            height: kDefaultHeight,
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.fromLTRB(
+                              kDefaultPadding * 0,
+                              kDefaultPadding * 2.5,
+                              kDefaultPadding * 0,
+                              kDefaultPadding * 0),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              Text(
+                                'auth.password_reset.page_name'.tr(),
+                                style: kFontTextStyle30,
+                              )
+                            ],
+                          ),
+                        ),
+                        Row(
+                          mainAxisSize: MainAxisSize.max,
+                          children: [
+                            Expanded(
+                              child: Padding(
+                                padding: EdgeInsets.fromLTRB(
+                                    kDefaultPadding * 0,
+                                    kDefaultPadding * 0,
+                                    kDefaultPadding * 0.1,
+                                    kDefaultPadding * 0),
+                                child: Text(
+                                  'auth.password_reset.page_description'.tr(),
+                                  textAlign: TextAlign.justify,
+                                  style: kFontTextStyle15,
+                                ),
+                              ),
+                            )
+                          ],
+                        ),
+                        _buildEmailTF(),
+                        Row(
+                          mainAxisSize: MainAxisSize.max,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Align(
+                              alignment: Alignment(0, 0),
+                              child: Padding(
+                                padding: EdgeInsets.fromLTRB(
+                                    kDefaultPadding * 0,
+                                    kDefaultPadding * 0.75,
+                                    kDefaultPadding * 0,
+                                    kDefaultPadding * 0),
+                                child: null,
+                              ),
+                            ),
+                            _buildSubmitBtn()
+                          ],
+                        ),
+                      ],
                     ),
                   ),
-                  Text(
-                    'auth.password_reset.page_name'.tr(),
-                    style: kFontTextStyle30,
-                  ),
-                  SizedBox(
-                    height: kDefaultPadding * 1.5,
-                  ),
-                  _buildEmailTF(),
-                  _buildSubmitBtn(),
-                ],
-              ),
+                )
+              ],
             ),
           ),
         ),

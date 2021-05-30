@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 const kDefaultPadding = 20.0;
+const kDefaultHeight = 100.0;
+const kDefaultWidth = 100.0;
 
 final kPageTitleTextStyle20 = GoogleFonts.oxygen(
   fontSize: 20,
@@ -28,27 +30,27 @@ final kLightButtonTextStyle20 = GoogleFonts.oxygen(
 );
 
 final kFontTextStyle10 = GoogleFonts.oxygen(
+  color: Color(0xFF0D1724),
   fontSize: 10,
-  fontWeight: FontWeight.w400,
-  color: Colors.white,
+  fontWeight: FontWeight.w500,
 );
 
 final kFontTextStyle15 = GoogleFonts.oxygen(
+  color: Color(0xFF0D1724),
   fontSize: 15,
-  fontWeight: FontWeight.w400,
-  color: Colors.white,
+  fontWeight: FontWeight.w500,
 );
 
 final kFontTextStyle20 = GoogleFonts.oxygen(
+  color: Color(0xFF0D1724),
   fontSize: 20,
-  fontWeight: FontWeight.w400,
-  color: Colors.white,
+  fontWeight: FontWeight.w500,
 );
 
 final kFontTextStyle30 = GoogleFonts.oxygen(
+  color: Color(0xFF0D1724),
   fontSize: 30,
-  fontWeight: FontWeight.w400,
-  color: Colors.white,
+  fontWeight: FontWeight.w500,
 );
 
 final kLabelStyle = GoogleFonts.oxygen(

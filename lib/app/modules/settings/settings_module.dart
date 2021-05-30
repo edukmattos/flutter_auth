@@ -1,3 +1,4 @@
+import 'package:flutter_auth/app/app_store.dart';
 import 'package:flutter_auth/app/modules/settings/settings_page.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
@@ -7,7 +8,7 @@ import 'settings_store.dart';
 class SettingsModule extends Module {
   @override
   final List<Bind> binds = [
-    Bind.lazySingleton((i) => SettingsStore(i.get<AuthRepository>())),
+    Bind.lazySingleton((i) => SettingsStore(i.get<AppStore>())),
     Bind.lazySingleton((i) => AuthRepository()),
   ];
 

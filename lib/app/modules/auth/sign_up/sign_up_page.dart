@@ -17,298 +17,314 @@ class SignUpPage extends StatefulWidget {
 }
 
 class SignUpPageState extends ModularState<SignUpPage, SignUpStore> {
+  final scaffoldKey = GlobalKey<ScaffoldState>();
+
   Widget _buildEmailTF() {
-    return Observer(
-      name: 'observerEmail',
-      builder: (_) {
-        return Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            //Text(
-            //  "Email",
-            //  style: kLabelStyle,
-            //),
-            SizedBox(
-              height: 5,
-            ),
-            Container(
-              alignment: Alignment.centerLeft,
-              decoration: kBoxDecorationStyle,
-              height: kDefaultPadding * 2.5,
-              child: TextFormField(
-                autofocus: true,
-                onChanged: controller.changeEmail,
-                keyboardType: TextInputType.emailAddress,
-                style: TextStyle(color: Colors.white),
-                decoration: InputDecoration(
-                  labelText: 'fields.email'.tr(),
-                  labelStyle: kLabelStyle,
-                  enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(
-                      color: Colors.transparent,
-                    ),
-                    borderRadius: BorderRadius.circular(10.0),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(
-                      color: Colors.white,
-                    ),
-                    borderRadius: BorderRadius.circular(10.0),
-                  ),
-                  contentPadding: EdgeInsets.only(
-                    top: 14,
-                  ),
-                  prefixIcon: Icon(
-                    Icons.email_outlined,
-                    color: Colors.white,
-                  ),
-                  suffixIcon: Padding(
-                    padding: EdgeInsetsDirectional.only(
-                      top: kDefaultPadding * 0.60,
-                      end: kDefaultPadding * 0.50,
-                    ),
-                    // ignore: unrelated_type_equality_checks
-                    child: controller.validateEmail() == null
-                        ? null
-                        : Text(
-                            controller.validateEmail()!,
-                            style: TextStyle(
-                              color: Colors.red,
-                              fontFamily: 'OpenSans',
-                              fontSize: 12,
-                            ),
-                          ),
-                  ),
-                  //hintText: "Entre com seu e-mail",
-                  //hintStyle: kHintTextStyle,
+    return Padding(
+      padding: EdgeInsets.fromLTRB(0, 12, 0, 0),
+      child: Row(
+        mainAxisSize: MainAxisSize.max,
+        children: [
+          Expanded(
+            child: Container(
+              width: 330,
+              height: 60,
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(8),
+                border: Border.all(
+                  color: Color(0xFFE6E6E6),
                 ),
               ),
+              child: Stack(
+                children: [
+                  Padding(
+                    padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
+                    child: Observer(
+                      name: 'observerEmail',
+                      builder: (_) {
+                        return TextFormField(
+                          obscureText: false,
+                          autofocus: false,
+                          onChanged: controller.changeEmail,
+                          keyboardType: TextInputType.emailAddress,
+                          style: kFontTextStyle15,
+                          decoration: InputDecoration(
+                            labelText: 'fields.email'.tr(),
+                            prefixIcon: Icon(
+                              Icons.email_outlined,
+                              color: Colors.black,
+                            ),
+                            suffixIcon: Padding(
+                              padding: EdgeInsetsDirectional.only(
+                                top: kDefaultPadding * 0.60,
+                                end: kDefaultPadding * 0.50,
+                              ),
+                              child: controller.validateEmail() == null
+                                  ? null
+                                  : Text(
+                                      controller.validateEmail()!,
+                                      style: TextStyle(
+                                        color: Colors.red,
+                                        fontFamily: 'OpenSans',
+                                        fontSize: 12,
+                                      ),
+                                    ),
+                            ),
+                            enabledBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(
+                                color: Colors.transparent,
+                                width: 1,
+                              ),
+                              borderRadius: const BorderRadius.only(
+                                topLeft: Radius.circular(4.0),
+                                topRight: Radius.circular(4.0),
+                              ),
+                            ),
+                            focusedBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(
+                                color: Colors.transparent,
+                                width: 1,
+                              ),
+                              borderRadius: const BorderRadius.only(
+                                topLeft: Radius.circular(4.0),
+                                topRight: Radius.circular(4.0),
+                              ),
+                            ),
+                          ),
+                        );
+                      },
+                    ),
+                  )
+                ],
+              ),
             ),
-          ],
-        );
-      },
+          ),
+        ],
+      ),
     );
   }
 
   Widget _buildPasswordTF() {
-    return Observer(
-        name: 'observerPassword',
-        builder: (_) {
-          return Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              //Text(
-              //  'E-mail',
-              //  style: kLabelStyle,
-              //),
-              //SizedBox(height: kDefaultPadding * 0.5),
-              Container(
-                alignment: Alignment.centerLeft,
-                decoration: kBoxDecorationStyleLight,
-                height: kDefaultPadding * 2.5,
-                child: Padding(
-                  padding: EdgeInsets.only(top: kDefaultPadding * 0.00),
-                  child: TextFormField(
-                    onChanged: controller.changePassword,
-                    autofocus: false,
-                    obscureText: true,
-                    keyboardType: TextInputType.text,
-                    style: TextStyle(
-                      color: Colors.white,
-                    ),
-                    decoration: InputDecoration(
-                      enabledBorder: OutlineInputBorder(
-                        borderSide: BorderSide(
-                          color: Colors.transparent,
-                        ),
-                        borderRadius: BorderRadius.circular(10.0),
-                      ),
-                      focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(
-                          color: Colors.white,
-                        ),
-                        borderRadius: BorderRadius.circular(10.0),
-                      ),
-                      //border: InputBorder.none,
-                      labelText: 'fields.password'.tr(),
-                      labelStyle: kLabelStyle,
-                      contentPadding: EdgeInsets.only(
-                        top: kDefaultPadding * 0.0,
-                      ),
-
-                      prefixIcon: Padding(
-                        padding: EdgeInsets.symmetric(
-                          horizontal: kDefaultPadding * 0.0,
-                          vertical: kDefaultPadding * 0.0,
-                        ),
-                        child: Icon(
-                          Icons.lock_outline_rounded,
-                          color: Colors.white,
-                        ),
-                      ),
-                      suffixIcon: Padding(
-                        padding: EdgeInsetsDirectional.only(
-                          top: kDefaultPadding * 0.60,
-                          end: kDefaultPadding * 0.50,
-                        ),
-                        // ignore: unrelated_type_equality_checks
-                        child: controller.validatePassword() == null
-                            ? null
-                            : Text(
-                                controller.validatePassword()!,
-                                style: TextStyle(
-                                  color: Colors.red,
-                                  fontFamily: 'OpenSans',
-                                  fontSize: 12,
-                                ),
-                              ),
-                      ),
-                    ),
-                    //hintText: 'E-mail',
-                    //hintStyle: kHintTextStyle,
-
-                    //errorText: controller.validateEmail(),
-                  ),
+    return Padding(
+      padding: EdgeInsets.fromLTRB(0, 12, 0, 0),
+      child: Row(
+        mainAxisSize: MainAxisSize.max,
+        children: [
+          Expanded(
+            child: Container(
+              width: 330,
+              height: 60,
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(8),
+                border: Border.all(
+                  color: Color(0xFFE6E6E6),
                 ),
               ),
-            ],
-          );
-        });
-  }
-
-  Widget _buildPasswordConfirmTF() {
-    return Observer(
-        name: 'observerPasswordConfirm',
-        builder: (_) {
-          return Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              //Text(
-              //  'E-mail',
-              //  style: kLabelStyle,
-              //),
-              //SizedBox(height: kDefaultPadding * 0.5),
-              Container(
-                alignment: Alignment.centerLeft,
-                decoration: kBoxDecorationStyleLight,
-                height: kDefaultPadding * 2.5,
-                child: Padding(
-                  padding: EdgeInsets.only(top: kDefaultPadding * 0.00),
-                  child: TextFormField(
-                    onChanged: controller.changePasswordConfirm,
-                    autofocus: false,
-                    obscureText: true,
-                    keyboardType: TextInputType.text,
-                    style: TextStyle(
-                      color: Colors.white,
-                    ),
-                    decoration: InputDecoration(
-                      enabledBorder: OutlineInputBorder(
-                        borderSide: BorderSide(
-                          color: Colors.transparent,
-                        ),
-                        borderRadius: BorderRadius.circular(10.0),
-                      ),
-                      focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(
-                          color: Colors.white,
-                        ),
-                        borderRadius: BorderRadius.circular(10.0),
-                      ),
-                      //border: InputBorder.none,
-                      labelText: 'fields.password_confirm'.tr(),
-                      labelStyle: kLabelStyle,
-                      contentPadding: EdgeInsets.only(
-                        top: kDefaultPadding * 0.0,
-                      ),
-
-                      prefixIcon: Padding(
-                        padding: EdgeInsets.symmetric(
-                          horizontal: kDefaultPadding * 0.0,
-                          vertical: kDefaultPadding * 0.0,
-                        ),
-                        child: Icon(
-                          Icons.lock_outline_rounded,
-                          color: Colors.white,
-                        ),
-                      ),
-                      suffixIcon: Padding(
-                        padding: EdgeInsetsDirectional.only(
-                          top: kDefaultPadding * 0.60,
-                          end: kDefaultPadding * 0.50,
-                        ),
-                        // ignore: unrelated_type_equality_checks
-                        child: controller.validatePasswordConfirm() == null
-                            ? null
-                            : Text(
-                                controller.validatePasswordConfirm()!,
-                                style: TextStyle(
-                                  color: Colors.red,
-                                  fontFamily: 'OpenSans',
-                                  fontSize: 12,
-                                ),
+              child: Stack(
+                children: [
+                  Padding(
+                    padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
+                    child: Observer(
+                      name: 'observerPassword',
+                      builder: (_) {
+                        return TextFormField(
+                          obscureText: true,
+                          autofocus: false,
+                          onChanged: controller.changePassword,
+                          keyboardType: TextInputType.emailAddress,
+                          style: kFontTextStyle15,
+                          decoration: InputDecoration(
+                            labelText: 'fields.password'.tr(),
+                            prefixIcon: Icon(
+                              Icons.lock_outlined,
+                              color: Colors.black,
+                            ),
+                            suffixIcon: Padding(
+                              padding: EdgeInsetsDirectional.only(
+                                top: kDefaultPadding * 0.60,
+                                end: kDefaultPadding * 0.50,
                               ),
-                      ),
-                    ),
-                    //hintText: 'E-mail',
-                    //hintStyle: kHintTextStyle,
-
-                    //errorText: controller.validateEmail(),
-                  ),
-                ),
-              ),
-            ],
-          );
-        });
-  }
-
-  Widget _buildSignUpBtn() {
-    return Observer(
-      name: 'submitButtonObserver',
-      builder: (_) {
-        return Container(
-          padding: EdgeInsets.symmetric(vertical: 25.0),
-          width: double.infinity,
-          child: ElevatedButton(
-            //elevation: 5.0,
-            onPressed: controller.isFormValid
-                ? () async {
-                    controller
-                        .signUpStoreEmailPassord(
-                      email: controller.email,
-                      password: controller.password,
-                    )
-                        .then((response) {
-                      showTopSnackBar(
-                        context,
-                        CustomSnackBar.success(
-                          message: tr('auth.success.sign_up'),
-                        ),
-                      );
-                    }).catchError(
-                      (error) {
-                        showTopSnackBar(
-                          context,
-                          CustomSnackBar.error(
-                            message: error.message,
+                              child: controller.validatePassword() == null
+                                  ? null
+                                  : Text(
+                                      controller.validatePassword()!,
+                                      style: TextStyle(
+                                        color: Colors.red,
+                                        fontFamily: 'OpenSans',
+                                        fontSize: 12,
+                                      ),
+                                    ),
+                            ),
+                            enabledBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(
+                                color: Colors.transparent,
+                                width: 1,
+                              ),
+                              borderRadius: const BorderRadius.only(
+                                topLeft: Radius.circular(4.0),
+                                topRight: Radius.circular(4.0),
+                              ),
+                            ),
+                            focusedBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(
+                                color: Colors.transparent,
+                                width: 1,
+                              ),
+                              borderRadius: const BorderRadius.only(
+                                topLeft: Radius.circular(4.0),
+                                topRight: Radius.circular(4.0),
+                              ),
+                            ),
                           ),
                         );
                       },
-                    );
-                  }
-                : null,
-            //padding: EdgeInsets.all(10.0),
-            //shape: RoundedRectangleBorder(
-            //  borderRadius: BorderRadius.circular(5.0),
-            //),
-            //color: Colors.blue,
-            child: Text(
-              'buttons.submit'.tr(),
-              style: kLightButtonTextStyle20,
+                    ),
+                  )
+                ],
+              ),
             ),
           ),
-        );
-      },
+        ],
+      ),
+    );
+  }
+
+  Widget _buildPasswordConfirmTF() {
+    return Padding(
+      padding: EdgeInsets.fromLTRB(0, 12, 0, 0),
+      child: Row(
+        mainAxisSize: MainAxisSize.max,
+        children: [
+          Expanded(
+            child: Container(
+              width: 330,
+              height: 60,
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(8),
+                border: Border.all(
+                  color: Color(0xFFE6E6E6),
+                ),
+              ),
+              child: Stack(
+                children: [
+                  Padding(
+                    padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
+                    child: Observer(
+                      name: 'observerPasswordConfirm',
+                      builder: (_) {
+                        return TextFormField(
+                          obscureText: true,
+                          autofocus: false,
+                          onChanged: controller.changePasswordConfirm,
+                          keyboardType: TextInputType.emailAddress,
+                          style: kFontTextStyle15,
+                          decoration: InputDecoration(
+                            labelText: 'fields.password_confirm'.tr(),
+                            prefixIcon: Icon(
+                              Icons.lock_outlined,
+                              color: Colors.black,
+                            ),
+                            suffixIcon: Padding(
+                              padding: EdgeInsetsDirectional.only(
+                                top: kDefaultPadding * 0.60,
+                                end: kDefaultPadding * 0.50,
+                              ),
+                              child:
+                                  controller.validatePasswordConfirm() == null
+                                      ? null
+                                      : Text(
+                                          controller.validatePasswordConfirm()!,
+                                          style: TextStyle(
+                                            color: Colors.red,
+                                            fontFamily: 'OpenSans',
+                                            fontSize: 12,
+                                          ),
+                                        ),
+                            ),
+                            enabledBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(
+                                color: Colors.transparent,
+                                width: 1,
+                              ),
+                              borderRadius: const BorderRadius.only(
+                                topLeft: Radius.circular(4.0),
+                                topRight: Radius.circular(4.0),
+                              ),
+                            ),
+                            focusedBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(
+                                color: Colors.transparent,
+                                width: 1,
+                              ),
+                              borderRadius: const BorderRadius.only(
+                                topLeft: Radius.circular(4.0),
+                                topRight: Radius.circular(4.0),
+                              ),
+                            ),
+                          ),
+                        );
+                      },
+                    ),
+                  )
+                ],
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildSubmitBtn() {
+    return Expanded(
+      child: Align(
+        alignment: Alignment(1, 0),
+        child: Padding(
+          padding: EdgeInsets.fromLTRB(0, 16, 0, 0),
+          child: Observer(
+            name: 'submitButtonObserver',
+            builder: (_) {
+              return ElevatedButton(
+                onPressed: controller.isFormValid
+                    ? () async {
+                        controller
+                            .signUpStoreEmailPassord(
+                          email: controller.email,
+                          password: controller.password,
+                        )
+                            .then((response) {
+                          showTopSnackBar(
+                            context,
+                            CustomSnackBar.success(
+                              message: tr('auth.success.sign_up'),
+                            ),
+                          );
+                        }).catchError(
+                          (error) {
+                            showTopSnackBar(
+                              context,
+                              CustomSnackBar.error(
+                                message: error.message,
+                              ),
+                            );
+                          },
+                        );
+                      }
+                    : null,
+                child: Text(
+                  'buttons.submit'.tr(),
+                  style: kLightButtonTextStyle20,
+                ),
+                style: ElevatedButton.styleFrom(
+                    padding: EdgeInsets.all(12), minimumSize: Size(150, 50)),
+              );
+            },
+          ),
+        ),
+      ),
     );
   }
 
@@ -319,56 +335,109 @@ class SignUpPageState extends ModularState<SignUpPage, SignUpStore> {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          Text('auth.sign_in.page_name').tr(),
-          Visibility(
-            visible: true,
-            child: Text(
-              ('app.name_short').tr(),
-              style: TextStyle(fontSize: 12.0),
-            ),
-          )
+          Text('app.name_short').tr(),
+          //Visibility(
+          //  visible: true,
+          //  child: Text(
+          //    ('app.name_short').tr(),
+          //    style: TextStyle(fontSize: 12.0),
+          //  ),
+          //)
         ],
       ),
     );
 
     return Scaffold(
+      key: scaffoldKey,
       appBar: appBar,
-      backgroundColor: Color(0xFF61A8EB),
       body: SafeArea(
         child: Center(
           child: SingleChildScrollView(
-            padding: const EdgeInsets.all(8.0),
-            child: Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: <Widget>[
-                  SizedBox(
-                    height: 100.0,
-                    child: Image.asset(
-                      "assets/images/logos/app_logo.png",
-                      fit: BoxFit.contain,
+            child: Stack(
+              children: [
+                Align(
+                  alignment: Alignment(0, 0),
+                  child: Padding(
+                    padding: EdgeInsets.fromLTRB(
+                        kDefaultPadding * 1,
+                        kDefaultPadding * 0,
+                        kDefaultPadding * 1,
+                        kDefaultPadding * 0),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: [
+                        Align(
+                          alignment: Alignment(0, 0),
+                          child: Image.asset(
+                            "assets/images/logos/app_logo.png",
+                            width: kDefaultWidth,
+                            height: kDefaultHeight,
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.fromLTRB(
+                              kDefaultPadding * 0,
+                              kDefaultPadding * 2.5,
+                              kDefaultPadding * 0,
+                              kDefaultPadding * 0),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              Text(
+                                'auth.sign_up.page_name'.tr(),
+                                style: kFontTextStyle30,
+                              )
+                            ],
+                          ),
+                        ),
+                        Row(
+                          mainAxisSize: MainAxisSize.max,
+                          children: [
+                            Expanded(
+                              child: Padding(
+                                padding: EdgeInsets.fromLTRB(
+                                    kDefaultPadding * 0,
+                                    kDefaultPadding * 0,
+                                    kDefaultPadding * 0.1,
+                                    kDefaultPadding * 0),
+                                child: Text(
+                                  'auth.sign_up.page_description'.tr(),
+                                  textAlign: TextAlign.justify,
+                                  style: kFontTextStyle15,
+                                ),
+                              ),
+                            )
+                          ],
+                        ),
+                        _buildEmailTF(),
+                        _buildPasswordTF(),
+                        _buildPasswordConfirmTF(),
+                        Row(
+                          mainAxisSize: MainAxisSize.max,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Align(
+                              alignment: Alignment(0, 0),
+                              child: Padding(
+                                padding: EdgeInsets.fromLTRB(
+                                    kDefaultPadding * 0,
+                                    kDefaultPadding * 0.75,
+                                    kDefaultPadding * 0,
+                                    kDefaultPadding * 0),
+                                child: null,
+                              ),
+                            ),
+                            _buildSubmitBtn(),
+                          ],
+                        ),
+                      ],
                     ),
                   ),
-                  Text(
-                    'auth.sign_up.page_name'.tr(),
-                    style: kFontTextStyle30,
-                  ),
-                  SizedBox(
-                    height: kDefaultPadding * 1.5,
-                  ),
-                  _buildEmailTF(),
-                  SizedBox(
-                    height: kDefaultPadding * 1.0,
-                  ),
-                  _buildPasswordTF(),
-                  SizedBox(
-                    height: kDefaultPadding * 1.0,
-                  ),
-                  _buildPasswordConfirmTF(),
-                  _buildSignUpBtn(),
-                ],
-              ),
+                )
+              ],
             ),
           ),
         ),

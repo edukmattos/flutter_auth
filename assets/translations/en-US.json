@@ -4,16 +4,19 @@
     },
     "auth":{
         "sign_up": {
-            "page_name": "Sign Up"
+            "page_name": "Sign Up",
+            "page_description": "Enter your information below to create your account"
         },
         "sign_in": {
-            "page_name": "Sign In"
+            "page_name": "Sign In",
+            "page_description": "Enter your information below to access your account"
         },
         "sign_in_google": {
             "text": "Login with Google"
         },
         "password_reset": {
-            "page_name": "Password Reset"
+            "page_name": "Password Reset",
+            "page_description": "Enter with your email below to receive instructions"
         },
         "errors": {
             "user_disabled": "Account Disabled.",
@@ -45,7 +48,8 @@
     },
     "texts": {
         "forgot_password": "Forgot Password ?",
-        "or": "or Sing In with"
+        "or": "or sing in with",
+        "sign_up": "Did you already an account ?"
     },
     "modules": {
         "clients": {

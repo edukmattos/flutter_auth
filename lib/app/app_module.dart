@@ -1,3 +1,4 @@
+import 'package:flutter_auth/app/app_store.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
 import 'modules/auth/password_reset/password_reset_module.dart';
@@ -8,7 +9,10 @@ import 'modules/settings/settings_module.dart';
 
 class AppModule extends Module {
   @override
-  final List<Bind> binds = [];
+  final List<Bind> binds = [
+    Bind.lazySingleton((i) => AppStore()),
+    //Bind.instance((i) => AppStore()),
+  ];
 
   @override
   final List<ModularRoute> routes = [

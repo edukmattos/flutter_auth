@@ -1,10 +1,10 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_auth/app/shared/widgets/drawer/app_drawer_widget.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:settings_ui/settings_ui.dart';
-import 'package:flutter_advanced_switch/flutter_advanced_switch.dart';
 
+import '../../shared/widgets/drawer/app_drawer_widget.dart';
 import 'settings_store.dart';
 
 class SettingsPage extends StatefulWidget {
@@ -35,27 +35,17 @@ class SettingsPageState extends ModularState<SettingsPage, SettingsStore> {
         ],
       ),
       actions: <Widget>[
-        Row(
-          mainAxisSize: MainAxisSize.max,
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: AdvancedSwitch(
-                activeChild: Icon(
-                  Icons.wb_sunny_outlined,
-                  color: Colors.blue,
-                ),
-                inactiveChild: Icon(Icons.wb_cloudy_outlined),
-                activeColor: Colors.yellowAccent,
-                inactiveColor: Colors.deepPurple,
-                borderRadius: BorderRadius.circular(24),
-                width: 60,
-                //controller: _controller15,
-              ),
-            ),
-          ],
-        )
+        Observer(
+          name: 'observerSwitchChangeTheme',
+          builder: (_) {
+            return Switch(
+              onChanged: (bool value) {
+                controller.appStore.changeTheme();
+              },
+              value: controller.appStore.isDark,
+            );
+          },
+        ),
       ],
     );
 

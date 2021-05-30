@@ -4,16 +4,19 @@
     },
     "auth":{
         "sign_up": {
-            "page_name": "Registro"
+            "page_name": "Nova Conta",
+            "page_description": "Entre com suas informações abaixo para criar sua conta"
         },
         "sign_in": {
-            "page_name": "Entrar"
+            "page_name": "Entrar",
+            "page_description": "Entre com suas informações abaixo para acessar sua conta"
         },
         "sign_in_google": {
             "text": "Entrar com Google"
         },
         "password_reset": {
-            "page_name": "Recuperar Senha"
+            "page_name": "Recuperar acesso",
+            "page_description": "Entre com o seu email abaixo para receber instruções"
         },
         "errors": {
             "user_disabled": "Conta Desabilitada.",
@@ -46,7 +49,8 @@
     },
     "texts": {
         "forgot_password": "Esqueceu Senha ?",
-        "or": "ou entre com"
+        "or": "ou entre com",
+        "sign_up": "Não tem conta ?"
     },
     "modules": {
         "clients": {

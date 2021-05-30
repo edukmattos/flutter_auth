@@ -1,3 +1,4 @@
+import 'package:badges/badges.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
@@ -19,6 +20,18 @@ class _HomePageState extends ModularState<HomePage, HomeStore> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Counter'),
+        actions: <Widget>[
+          Padding(
+            padding: const EdgeInsets.only(
+              top: 10,
+              right: 20,
+            ),
+            child: Badge(
+              badgeContent: Text('6'),
+              child: Icon(Icons.car_rental_outlined),
+            ),
+          )
+        ],
       ),
       body: Observer(
         builder: (context) => Text('${controller.counter}'),
