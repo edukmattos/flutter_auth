@@ -13,12 +13,14 @@ class AppWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // Device orientation - start
     SystemChrome.setPreferredOrientations([
       DeviceOrientation.portraitDown,
       DeviceOrientation.portraitUp,
       DeviceOrientation.landscapeLeft,
       DeviceOrientation.landscapeRight,
     ]);
+    // Device orientation - end
     return Observer(builder: (_) {
       // ignore: unnecessary_null_comparison
       if (appStore.themeData != null) {
