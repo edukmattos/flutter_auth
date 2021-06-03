@@ -8,12 +8,13 @@ import 'app_store.dart';
 class AppWidget extends StatelessWidget {
   //final appStore = Modular.get<AppStore>();
 
-  final appStore = AppStore();
+  final AppStore appStore = AppStore();
 
   @override
   Widget build(BuildContext context) {
-    return Observer(
-      builder: (_) {
+    return Observer(builder: (_) {
+      // ignore: unnecessary_null_comparison
+      if (appStore.themeData != null) {
         return MaterialApp(
           localizationsDelegates: context.localizationDelegates,
           supportedLocales: context.supportedLocales,
@@ -22,7 +23,11 @@ class AppWidget extends StatelessWidget {
           title: 'Flutter Slidy',
           theme: appStore.themeData,
         ).modular();
-      },
-    );
+      } else {
+        return Center(
+          child: CircularProgressIndicator(),
+        );
+      }
+    });
   }
 }
