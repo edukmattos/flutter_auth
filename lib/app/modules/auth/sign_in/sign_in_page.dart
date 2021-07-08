@@ -345,6 +345,7 @@ class SignInPageState extends ModularState<SignInPage, SignInStore> {
         child: Center(
           child: SingleChildScrollView(
             child: Stack(
+              fit: StackFit.passthrough,
               children: [
                 Align(
                   alignment: Alignment(0, 0),
@@ -365,7 +366,7 @@ class SignInPageState extends ModularState<SignInPage, SignInStore> {
                             "assets/images/logos/app_logo.png",
                             width: kDefaultWidth,
                             height: kDefaultHeight,
-                            fit: BoxFit.cover,
+                            fit: BoxFit.fitHeight,
                           ),
                         ),
                         Padding(
@@ -444,11 +445,12 @@ class SignInPageState extends ModularState<SignInPage, SignInStore> {
                           ),
                         ),
                         SizedBox(
-                          height: kDefaultHeight * 1.5,
+                          height: kDefaultHeight * 1.0,
                         ),
                         Align(
                           alignment: Alignment(0, 0),
                           child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.end,
                             mainAxisSize: MainAxisSize.max,
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [

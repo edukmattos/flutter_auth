@@ -8,7 +8,7 @@ class AppStore = _AppStoreBase with _$AppStore;
 
 abstract class _AppStoreBase with Store {
   _AppStoreBase() {
-    loadThemePrefs();
+    sharedPrefsThemeLoad();
   }
 
   @observable
@@ -22,22 +22,22 @@ abstract class _AppStoreBase with Store {
     if (isDark) {
       print("dark: $isDark");
       themeData = ThemeData.light();
-      print(themeData);
+      print("themeData: $themeData");
     } else {
       print("dark: $isDark");
       themeData = ThemeData.dark();
-      print(themeData);
+      print("themeData: $themeData");
     }
-    saveThemePrefs();
+    sharedPrefsThemeSave();
   }
 
-  void saveThemePrefs() {
+  void sharedPrefsThemeSave() {
     SharedPreferences.getInstance().then((instance) {
       instance.setBool('isDark', isDark);
     });
   }
 
-  void loadThemePrefs() async {
+  Future<void> sharedPrefsThemeLoad() async {
     final prefs = await SharedPreferences.getInstance();
     //Future.delayed(Duration(seconds: 5));
     if (prefs.containsKey('isDark') && prefs.getBool('isDark')!) {

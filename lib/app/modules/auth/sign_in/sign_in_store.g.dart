@@ -51,7 +51,7 @@ mixin _$SignInStore on _SignInStoreBase, Store {
       AsyncAction('_SignInStoreBase.authStoreGoogleSignIn');
 
   @override
-  Future<void> authStoreGoogleSignIn() {
+  Future<dynamic> authStoreGoogleSignIn() {
     return _$authStoreGoogleSignInAsyncAction
         .run(() => super.authStoreGoogleSignIn());
   }
@@ -64,6 +64,15 @@ mixin _$SignInStore on _SignInStoreBase, Store {
       {required String email, required String password}) {
     return _$authStoreEmailPasswordSignInAsyncAction.run(() =>
         super.authStoreEmailPasswordSignIn(email: email, password: password));
+  }
+
+  final _$sharedPrefsUserSaveAsyncAction =
+      AsyncAction('_SignInStoreBase.sharedPrefsUserSave');
+
+  @override
+  Future<void> sharedPrefsUserSave() {
+    return _$sharedPrefsUserSaveAsyncAction
+        .run(() => super.sharedPrefsUserSave());
   }
 
   final _$_SignInStoreBaseActionController =

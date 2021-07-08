@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mobx/mobx.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:string_validator/string_validator.dart' as stringValidator;
 import 'package:validators/validators.dart';
 
@@ -69,7 +70,7 @@ abstract class _SignInStoreBase with Store {
   }
 
   @action
-  Future<void> authStoreGoogleSignIn() async {
+  Future<dynamic> authStoreGoogleSignIn() async {
     await authRepository.authRepoSignInWithGoogle().then((response) {
       if (response.success) {
         Modular.to.pushNamed('/home');
@@ -96,5 +97,12 @@ abstract class _SignInStoreBase with Store {
         throw response;
       }
     });
+  }
+
+  @action
+  Future<void> sharedPrefsUserSave() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.setString('userDisplayName', '');
+    prefs.setString('userEmail', '');
   }
 }
