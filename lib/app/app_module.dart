@@ -1,4 +1,6 @@
 import 'package:flutter_auth/app/app_store.dart';
+import 'package:flutter_auth/app/core/interfaces/shared_repository_interface.dart';
+import 'package:flutter_auth/app/core/repositories/shared_repository.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
 import 'modules/auth/password_reset/password_reset_module.dart';
@@ -10,6 +12,7 @@ import 'modules/settings/settings_module.dart';
 class AppModule extends Module {
   @override
   final List<Bind> binds = [
+    Bind<ISharedRepositoryInterface>((i) => SharedRepository()),
     Bind.lazySingleton((i) => AppStore()),
     //Bind.instance((i) => AppStore()),
   ];

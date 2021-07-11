@@ -1,49 +1,66 @@
-import 'package:flutter/material.dart';
 import 'package:mobx/mobx.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+
+import 'core/interfaces/app_theme_interface.dart';
+import 'core/interfaces/shared_repository_interface.dart';
+import 'core/repositories/shared_repository.dart';
+import 'core/themes/app_theme_dark.dart';
+import 'core/themes/app_theme_light.dart';
 
 part 'app_store.g.dart';
 
 class AppStore = _AppStoreBase with _$AppStore;
 
 abstract class _AppStoreBase with Store {
+  ISharedRepositoryInterface sharedRepository = SharedRepository();
+
   _AppStoreBase() {
     sharedPrefsThemeLoad();
   }
 
   @observable
-  ThemeData themeData = ThemeData.light();
-
-  @computed
-  bool get isDark => themeData.brightness == Brightness.dark;
+  bool isDark = false;
 
   @action
-  void changeTheme() {
-    if (isDark) {
-      print("dark: $isDark");
-      themeData = ThemeData.light();
-      print("themeData: $themeData");
-    } else {
-      print("dark: $isDark");
-      themeData = ThemeData.dark();
-      print("themeData: $themeData");
-    }
-    sharedPrefsThemeSave();
+  changeIsDark(bool value) {
+    isDark = value;
+    setThemeData(value);
+    print(value);
   }
 
-  void sharedPrefsThemeSave() {
-    SharedPreferences.getInstance().then((instance) {
-      instance.setBool('isDark', isDark);
-    });
+  @observable
+  IAppThemeInterface appTheme = AppThemeLight();
+
+  @action
+  sharedPrefsThemeLoad() async {
+    await sharedRepository.getValue<bool>('isDark').then(
+      (value) {
+        setThemeData(value);
+      },
+    );
   }
 
-  Future<void> sharedPrefsThemeLoad() async {
-    final prefs = await SharedPreferences.getInstance();
-    //Future.delayed(Duration(seconds: 5));
-    if (prefs.containsKey('isDark') && prefs.getBool('isDark')!) {
-      themeData = ThemeData.dark();
+  @action
+  setThemeData(value, {bool saveShared = true}) async {
+    //print("themeMode: $themeMode");
+    //if (value == null) {
+    //  appTheme = AppThemeDark();
+    //  //isDark = true;
+    //}
+    if (value) {
+      appTheme = AppThemeDark();
+      isDark = true;
     } else {
-      themeData = ThemeData.light();
+      appTheme = AppThemeLight();
+      isDark = false;
     }
+
+    print("isDark: $isDark");
+    if (saveShared) {
+      sharedPrefsThemeSave();
+    }
+  }
+
+  sharedPrefsThemeSave() async {
+    await sharedRepository.setValue<bool>('isDark', isDark);
   }
 }

@@ -9,37 +9,62 @@ part of 'app_store.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
 
 mixin _$AppStore on _AppStoreBase, Store {
-  Computed<bool>? _$isDarkComputed;
+  final _$isDarkAtom = Atom(name: '_AppStoreBase.isDark');
 
   @override
-  bool get isDark => (_$isDarkComputed ??=
-          Computed<bool>(() => super.isDark, name: '_AppStoreBase.isDark'))
-      .value;
-
-  final _$themeDataAtom = Atom(name: '_AppStoreBase.themeData');
-
-  @override
-  ThemeData get themeData {
-    _$themeDataAtom.reportRead();
-    return super.themeData;
+  bool get isDark {
+    _$isDarkAtom.reportRead();
+    return super.isDark;
   }
 
   @override
-  set themeData(ThemeData value) {
-    _$themeDataAtom.reportWrite(value, super.themeData, () {
-      super.themeData = value;
+  set isDark(bool value) {
+    _$isDarkAtom.reportWrite(value, super.isDark, () {
+      super.isDark = value;
     });
+  }
+
+  final _$appThemeAtom = Atom(name: '_AppStoreBase.appTheme');
+
+  @override
+  IAppThemeInterface get appTheme {
+    _$appThemeAtom.reportRead();
+    return super.appTheme;
+  }
+
+  @override
+  set appTheme(IAppThemeInterface value) {
+    _$appThemeAtom.reportWrite(value, super.appTheme, () {
+      super.appTheme = value;
+    });
+  }
+
+  final _$sharedPrefsThemeLoadAsyncAction =
+      AsyncAction('_AppStoreBase.sharedPrefsThemeLoad');
+
+  @override
+  Future sharedPrefsThemeLoad() {
+    return _$sharedPrefsThemeLoadAsyncAction
+        .run(() => super.sharedPrefsThemeLoad());
+  }
+
+  final _$setThemeDataAsyncAction = AsyncAction('_AppStoreBase.setThemeData');
+
+  @override
+  Future setThemeData(dynamic value, {bool saveShared = true}) {
+    return _$setThemeDataAsyncAction
+        .run(() => super.setThemeData(value, saveShared: saveShared));
   }
 
   final _$_AppStoreBaseActionController =
       ActionController(name: '_AppStoreBase');
 
   @override
-  void changeTheme() {
+  dynamic changeIsDark(bool value) {
     final _$actionInfo = _$_AppStoreBaseActionController.startAction(
-        name: '_AppStoreBase.changeTheme');
+        name: '_AppStoreBase.changeIsDark');
     try {
-      return super.changeTheme();
+      return super.changeIsDark(value);
     } finally {
       _$_AppStoreBaseActionController.endAction(_$actionInfo);
     }
@@ -48,8 +73,8 @@ mixin _$AppStore on _AppStoreBase, Store {
   @override
   String toString() {
     return '''
-themeData: ${themeData},
-isDark: ${isDark}
+isDark: ${isDark},
+appTheme: ${appTheme}
     ''';
   }
 }

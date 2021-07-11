@@ -9,34 +9,28 @@ import 'app_store.dart';
 class AppWidget extends StatelessWidget {
   //final appStore = Modular.get<AppStore>();
 
-  final appStore = AppStore();
-
   @override
   Widget build(BuildContext context) {
-    // Device orientation - start
-    SystemChrome.setPreferredOrientations([
-      DeviceOrientation.portraitDown,
-      DeviceOrientation.portraitUp,
-      DeviceOrientation.landscapeLeft,
-      DeviceOrientation.landscapeRight,
-    ]);
-    // Device orientation - end
     return Observer(
       builder: (_) {
-        print("themew: $appStore.themeData");
-        // ignore: unnecessary_null_comparison
-        return appStore.themeData != null
-            ? MaterialApp(
-                localizationsDelegates: context.localizationDelegates,
-                supportedLocales: context.supportedLocales,
-                locale: context.locale,
-                debugShowCheckedModeBanner: false,
-                title: 'Flutter Slidy',
-                theme: appStore.themeData,
-              ).modular()
-            : Center(
-                child: CircularProgressIndicator(),
-              );
+        // Device orientation - start
+        SystemChrome.setPreferredOrientations([
+          DeviceOrientation.portraitDown,
+          DeviceOrientation.portraitUp,
+          DeviceOrientation.landscapeLeft,
+          DeviceOrientation.landscapeRight,
+        ]);
+        // Device orientation - end
+        //print(appStore.appTheme.getTheme().toString());
+
+        return MaterialApp(
+          localizationsDelegates: context.localizationDelegates,
+          supportedLocales: context.supportedLocales,
+          locale: context.locale,
+          debugShowCheckedModeBanner: false,
+          title: 'Flutter Slidy',
+          theme: Modular.get<AppStore>().appTheme.getTheme(),
+        ).modular();
       },
     );
   }
