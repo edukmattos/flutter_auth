@@ -33,7 +33,9 @@ class AuthRepository implements IAuthRepository {
       );
       var user = await _auth.signInWithCredential(credential);
       print('Google Sign-In completed!');
-      print(user);
+      print(user.user!.displayName);
+      print(user.user!.phoneNumber);
+      print(user.user!.email);
 
       return ResponseBuilder.success<User>(
         object: _auth.currentUser,

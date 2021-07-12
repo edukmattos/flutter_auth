@@ -1,11 +1,12 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mobx/mobx.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:string_validator/string_validator.dart' as stringValidator;
 import 'package:validators/validators.dart';
 
-import 'package:flutter_auth/app/shared/auth/repositories/auth_repository.dart';
+import '../../../core/interfaces/shared_repository_interface.dart';
+import '../../../core/repositories/shared_repository.dart';
+import '../../../shared/auth/repositories/auth_repository.dart';
 
 part 'sign_in_store.g.dart';
 
@@ -13,6 +14,7 @@ class SignInStore = _SignInStoreBase with _$SignInStore;
 
 abstract class _SignInStoreBase with Store {
   AuthRepository authRepository;
+  ISharedRepositoryInterface sharedRepository = SharedRepository();
 
   _SignInStoreBase(
     this.authRepository,
@@ -99,10 +101,8 @@ abstract class _SignInStoreBase with Store {
     });
   }
 
-  @action
-  Future<void> sharedPrefsUserSave() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    prefs.setString('userDisplayName', '');
-    prefs.setString('userEmail', '');
+  sharedPrefsUserSave() async {
+    await sharedRepository.setValue<String>('userDisplayName', '');
+    await sharedRepository.setValue<String>('userEmail', '');
   }
 }

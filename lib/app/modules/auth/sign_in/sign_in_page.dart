@@ -293,12 +293,12 @@ class SignInPageState extends ModularState<SignInPage, SignInStore> {
               //btnText: 'auth.sign_in_google'.tr(),
               onPressed: () async {
                 await controller.authStoreGoogleSignIn().then((response) {
-                  showTopSnackBar(
-                    context,
-                    CustomSnackBar.success(
-                      message: tr('auth.success.sign_in'),
-                    ),
-                  );
+                  //showTopSnackBar(
+                  //  context,
+                  //  CustomSnackBar.success(
+                  //    message: tr('auth.success.sign_in'),
+                  //  ),
+                  //);
                 }).catchError(
                   (error) {
                     showTopSnackBar(
