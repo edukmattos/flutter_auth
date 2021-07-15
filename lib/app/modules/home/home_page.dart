@@ -42,7 +42,10 @@ class _HomePageState extends ModularState<HomePage, HomeStore> {
         },
         child: Icon(Icons.add),
       ),
-      drawer: DrawerWidget(),
+      drawer: DrawerWidget(
+        userDisplayName: "Edu Mattos",
+        userEmail: "ecmattos@ig.com.br",
+      ),
     );
   }
 }

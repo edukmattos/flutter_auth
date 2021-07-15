@@ -4,9 +4,19 @@ import 'package:flutter_modular/flutter_modular.dart';
 
 import 'drawer_item_widget.dart';
 
-class DrawerWidget extends StatelessWidget {
-  //final SignOutStore signOutStore = Modular.get<SignOutStore>();
+class DrawerWidget extends StatefulWidget {
+  final String userDisplayName;
+  final String userEmail;
 
+  DrawerWidget(
+      {Key? key, required this.userDisplayName, required this.userEmail})
+      : super(key: key);
+
+  @override
+  _DrawerWidgetState createState() => _DrawerWidgetState();
+}
+
+class _DrawerWidgetState extends State<DrawerWidget> {
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -18,8 +28,8 @@ class DrawerWidget extends StatelessWidget {
                 children: <Widget>[
                   //drawerHeaderWidget(),
                   UserAccountsDrawerHeader(
-                    accountName: Text('Eduardo Mattoss'),
-                    accountEmail: Text('edukmattos@gmail.com'),
+                    accountName: Text(widget.userDisplayName),
+                    accountEmail: Text(widget.userEmail),
                     currentAccountPicture: CircleAvatar(
                       child: Text('EM'),
                     ),

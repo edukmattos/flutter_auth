@@ -160,7 +160,10 @@ class SettingsPageState extends ModularState<SettingsPage, SettingsStore> {
       body: SafeArea(
         child: _buildSettingsList(),
       ),
-      drawer: DrawerWidget(),
+      drawer: DrawerWidget(
+        userDisplayName: "Edu Mattos",
+        userEmail: "ecmattos@ig.com.br",
+      ),
     );
   }
 }
