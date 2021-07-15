@@ -7,38 +7,29 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:211952721151:android:5932cceda2e5938b5800ca",
+        "mobilesdk_app_id": "1:211952721151:android:9a9c88bd4022fbb95800ca",
         "android_client_info": {
           "package_name": "br.com.ekmtek.siges"
         }
       },
       "oauth_client": [
         {
-          "client_id": "211952721151-8aqjrgs05uv3d3qtrhop0nitckp4rvvi.apps.googleusercontent.com",
+          "client_id": "211952721151-qja7i9lh9i89a0cks3ocumo9lb27au5q.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "br.com.ekmtek.siges",
             "certificate_hash": "b08053f0f19247042d68f1c2f4a05f8d8c6e3f5f"
           }
-        },
-        {
-          "client_id": "211952721151-aflctf3ouh3si9llsncgi4d1oulq0qf3.apps.googleusercontent.com",
-          "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCXV9_exus0nbHsIDUlRU_sU7JbKL70kjc"
+          "current_key": "AIzaSyCLnkoJ3oN9OQxhfx_Ayl8Netaq8BflfBo"
         }
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "211952721151-aflctf3ouh3si9llsncgi4d1oulq0qf3.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
+          "other_platform_oauth_client": []
         }
       }
     }

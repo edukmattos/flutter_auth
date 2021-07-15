@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 
-Widget appDrawerHeaderWidget() {
+Widget drawerHeaderWidget() {
   return DrawerHeader(
     margin: EdgeInsets.zero,
     padding: EdgeInsets.zero,
@@ -18,7 +19,9 @@ Widget appDrawerHeaderWidget() {
                 borderRadius: BorderRadius.circular(20.0),
                 side: BorderSide(color: Colors.red),
               ),
-              onPressed: () {},
+              onPressed: () {
+                Modular.to.pushNamed('/sign_out');
+              },
               color: Colors.red,
               textColor: Colors.white,
               child: Text(

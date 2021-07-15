@@ -48,12 +48,12 @@ mixin _$AppStore on _AppStoreBase, Store {
         .run(() => super.sharedPrefsThemeLoad());
   }
 
-  final _$setThemeDataAsyncAction = AsyncAction('_AppStoreBase.setThemeData');
+  final _$setThemeAsyncAction = AsyncAction('_AppStoreBase.setTheme');
 
   @override
-  Future setThemeData(dynamic value, {bool saveShared = true}) {
-    return _$setThemeDataAsyncAction
-        .run(() => super.setThemeData(value, saveShared: saveShared));
+  Future setTheme(dynamic value, {bool saveShared = true}) {
+    return _$setThemeAsyncAction
+        .run(() => super.setTheme(value, saveShared: saveShared));
   }
 
   final _$_AppStoreBaseActionController =

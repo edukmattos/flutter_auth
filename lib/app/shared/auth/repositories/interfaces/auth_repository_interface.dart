@@ -10,5 +10,5 @@ abstract class IAuthRepository {
   Future<DefaultResponse> authRepoSignUpEmailPassword(
       {required String email, required String password});
 
-  Future<void> signOutWithGoogle();
+  Future<void> authRepoSignOutWithGoogle();
 }

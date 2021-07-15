@@ -1,4 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter_auth/app/core/interfaces/shared_repository_interface.dart';
+import 'package:flutter_auth/app/core/repositories/shared_repository.dart';
 import 'package:flutter_auth/app/shared/auth/repositories/interfaces/auth_repository_interface.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -8,6 +10,7 @@ import '../../../core/responses/response_builder.dart';
 import '../../../core/responses/response_default.dart';
 
 class AuthRepository implements IAuthRepository {
+  ISharedRepositoryInterface sharedRepository = SharedRepository();
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
   GoogleSignIn _googleSignIn = GoogleSignIn(
@@ -33,9 +36,12 @@ class AuthRepository implements IAuthRepository {
       );
       var user = await _auth.signInWithCredential(credential);
       print('Google Sign-In completed!');
-      print(user.user!.displayName);
-      print(user.user!.phoneNumber);
-      print(user.user!.email);
+      print("user");
+      var userDisplayName = _auth.currentUser!.displayName;
+      sharedPrefsUserDisplayNameSave(userDisplayName);
+
+      var userDisplayEmail = (_auth.currentUser!.email);
+      sharedPrefsUserEmailSave(userDisplayEmail);
 
       return ResponseBuilder.success<User>(
         object: _auth.currentUser,
@@ -61,9 +67,9 @@ class AuthRepository implements IAuthRepository {
       );
       return ResponseBuilder.success<User>(
         object: _auth.currentUser,
-        message: "Email enviado com sucesso !",
       );
     } on FirebaseAuthException catch (e) {
+      print(e.code);
       return ResponseBuilder.failed(
         object: e,
         message: e.code,
@@ -114,5 +120,13 @@ class AuthRepository implements IAuthRepository {
     }
   }
 
-  Future<void> signOutWithGoogle() => _googleSignIn.disconnect();
+  Future<void> authRepoSignOutWithGoogle() => _googleSignIn.signOut();
+
+  sharedPrefsUserDisplayNameSave(value) async {
+    await sharedRepository.setValue<String>('userDisplayName', value);
+  }
+
+  sharedPrefsUserEmailSave(value) async {
+    await sharedRepository.setValue<String>('userEmail', value);
+  }
 }

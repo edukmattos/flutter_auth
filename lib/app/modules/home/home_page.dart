@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
-import '../../shared/widgets/drawer/app_drawer_widget.dart';
+import '../../shared/widgets/drawer/drawer_widget.dart';
 import 'home_store.dart';
 
 class HomePage extends StatefulWidget {
@@ -42,7 +42,7 @@ class _HomePageState extends ModularState<HomePage, HomeStore> {
         },
         child: Icon(Icons.add),
       ),
-      drawer: AppDrawerWidget(),
+      drawer: DrawerWidget(),
     );
   }
 }

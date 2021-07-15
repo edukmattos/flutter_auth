@@ -2,10 +2,11 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
-import 'app_drawer_header_widget.dart';
-import 'app_drawer_item_widget.dart';
+import 'drawer_item_widget.dart';
 
-class AppDrawerWidget extends StatelessWidget {
+class DrawerWidget extends StatelessWidget {
+  //final SignOutStore signOutStore = Modular.get<SignOutStore>();
+
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -15,7 +16,36 @@ class AppDrawerWidget extends StatelessWidget {
             Expanded(
               child: Column(
                 children: <Widget>[
-                  appDrawerHeaderWidget(),
+                  //drawerHeaderWidget(),
+                  UserAccountsDrawerHeader(
+                    accountName: Text('Eduardo Mattoss'),
+                    accountEmail: Text('edukmattos@gmail.com'),
+                    currentAccountPicture: CircleAvatar(
+                      child: Text('EM'),
+                    ),
+                    otherAccountsPictures: <Widget>[
+                      RaisedButton(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20.0),
+                          side: BorderSide(color: Colors.red),
+                        ),
+                        onPressed: () {
+                          Modular.to.pushNamed('/sign_out');
+                        },
+                        color: Colors.red,
+                        textColor: Colors.white,
+                        child: Text(
+                          "Buy now".toUpperCase(),
+                          style: TextStyle(fontSize: 14),
+                        ),
+                      ),
+                      Text(
+                        "Buy now".toUpperCase(),
+                        style: TextStyle(fontSize: 14),
+                      ),
+                    ],
+                  ),
+                  //
                   ListTile(
                     title: Text(
                       'Menu',
@@ -27,13 +57,13 @@ class AppDrawerWidget extends StatelessWidget {
                           builder: (context) => dealerBuilder()));*/
                     },
                   ),
-                  appDrawerItemWidget(
+                  drawerItemWidget(
                       icon: Icons.contacts,
                       text: tr('modules.clients.name'),
                       onTap: () {
                         Modular.to.pushNamed('/clients/dashboard');
                       }),
-                  appDrawerItemWidget(
+                  drawerItemWidget(
                       icon: Icons.event,
                       text: tr('modules.clients.name'),
                       onTap: () {}),
@@ -46,7 +76,7 @@ class AppDrawerWidget extends StatelessWidget {
                 child: Column(
                   children: <Widget>[
                     Divider(),
-                    appDrawerItemWidget(
+                    drawerItemWidget(
                         icon: Icons.settings,
                         text: tr('modules.settings.name'),
                         onTap: () {

@@ -23,7 +23,7 @@ abstract class _AppStoreBase with Store {
   @action
   changeIsDark(bool value) {
     isDark = value;
-    setThemeData(value);
+    setTheme(value);
     print(value);
   }
 
@@ -32,20 +32,33 @@ abstract class _AppStoreBase with Store {
 
   @action
   sharedPrefsThemeLoad() async {
-    await sharedRepository.getValue<bool>('isDark').then(
-      (value) {
-        setThemeData(value);
+    //Verifica se existe o parametro armazenado no SharedPreferences
+    await sharedRepository.containsValue('isDark').then(
+      (value) async {
+        //print("value: $value");
+        if (value) {
+          //Existe o parametro e pega o seu valor
+          await sharedRepository.getValue<bool>('isDark').then(
+            (value) {
+              setTheme(value);
+            },
+          );
+        } else {
+          //Se não existe o parametro
+          appTheme = AppThemeLight();
+          isDark = false;
+          setTheme(isDark);
+        }
+      },
+    ).catchError(
+      (e) {
+        print(e);
       },
     );
   }
 
   @action
-  setThemeData(value, {bool saveShared = true}) async {
-    //print("themeMode: $themeMode");
-    //if (value == null) {
-    //  appTheme = AppThemeDark();
-    //  //isDark = true;
-    //}
+  setTheme(value, {bool saveShared = true}) async {
     if (value) {
       appTheme = AppThemeDark();
       isDark = true;

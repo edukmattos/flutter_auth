@@ -18,9 +18,7 @@ abstract class _SignInStoreBase with Store {
 
   _SignInStoreBase(
     this.authRepository,
-  ) {
-    authRepository = Modular.get<AuthRepository>();
-  }
+  );
 
   @observable
   String email = "";
@@ -99,10 +97,5 @@ abstract class _SignInStoreBase with Store {
         throw response;
       }
     });
-  }
-
-  sharedPrefsUserSave() async {
-    await sharedRepository.setValue<String>('userDisplayName', '');
-    await sharedRepository.setValue<String>('userEmail', '');
   }
 }

@@ -21,6 +21,7 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   <meta name="apple-mobile-web-app-title" content="flutter_auth">
+  <meta name="google-signin-client_id" content="211952721151-mlh0a1j8pn8qv0c18dnf2sjic39gcdhd.apps.googleusercontent.com">
   <link rel="apple-touch-icon" href="icons/Icon-192.png">
 
   <!-- Favicon -->
@@ -30,6 +31,29 @@
   <link rel="manifest" href="manifest.json">
 </head>
 <body>
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-app.js"></script>
+
+  <!-- TODO: Add SDKs for Firebase products that you want to use
+      https://firebase.google.com/docs/web/setup#available-libraries -->
+  <script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-analytics.js"></script>
+
+  <script>
+    // Your web app's Firebase configuration
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    var firebaseConfig = {
+      apiKey: "AIzaSyCuBD0CVfx3VwCTZ4rkUEqiFh_ltgPLsRA",
+      authDomain: "ekmtek-c5a3f.firebaseapp.com",
+      projectId: "ekmtek-c5a3f",
+      storageBucket: "ekmtek-c5a3f.appspot.com",
+      messagingSenderId: "211952721151",
+      appId: "1:211952721151:web:fd39cf7f7269ce6d5800ca",
+      measurementId: "G-KVJ9XZMTS8"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    firebase.analytics();
+  </script>
   <!-- This script installs service_worker.js to provide PWA functionality to
        application. For more information, see:
        https://developers.google.com/web/fundamentals/primers/service-workers -->

@@ -4,7 +4,7 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:settings_ui/settings_ui.dart';
 
-import '../../shared/widgets/drawer/app_drawer_widget.dart';
+import '../../shared/widgets/drawer/drawer_widget.dart';
 import 'settings_store.dart';
 
 class SettingsPage extends StatefulWidget {
@@ -160,7 +160,7 @@ class SettingsPageState extends ModularState<SettingsPage, SettingsStore> {
       body: SafeArea(
         child: _buildSettingsList(),
       ),
-      drawer: AppDrawerWidget(),
+      drawer: DrawerWidget(),
     );
   }
 }

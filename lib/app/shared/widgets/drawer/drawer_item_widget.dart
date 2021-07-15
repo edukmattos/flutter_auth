@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-Widget appDrawerItemWidget(
+Widget drawerItemWidget(
     {required IconData icon,
     required String text,
     required GestureTapCallback onTap}) {

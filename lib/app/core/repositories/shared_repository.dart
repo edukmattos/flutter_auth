@@ -46,4 +46,11 @@ class SharedRepository implements ISharedRepositoryInterface {
       }
     });
   }
+
+  @override
+  Future<bool> containsValue(String key) async {
+    return await setInstance().then((sharedPreferences) {
+      return sharedPreferences.containsKey(key);
+    });
+  }
 }
