@@ -291,7 +291,7 @@ class SignUpPageState extends ModularState<SignUpPage, SignUpStore> {
                 onPressed: controller.isFormValid
                     ? () async {
                         controller
-                            .signUpStoreEmailPassord(
+                            .authStoreEmailPassordSignUp(
                           email: controller.email,
                           password: controller.password,
                         )

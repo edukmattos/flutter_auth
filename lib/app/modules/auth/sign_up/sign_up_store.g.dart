@@ -62,14 +62,14 @@ mixin _$SignUpStore on _SignUpStoreBase, Store {
     });
   }
 
-  final _$signUpStoreEmailPassordAsyncAction =
-      AsyncAction('_SignUpStoreBase.signUpStoreEmailPassord');
+  final _$authStoreEmailPassordSignUpAsyncAction =
+      AsyncAction('_SignUpStoreBase.authStoreEmailPassordSignUp');
 
   @override
-  Future<void> signUpStoreEmailPassord(
+  Future<void> authStoreEmailPassordSignUp(
       {required String email, required String password}) {
-    return _$signUpStoreEmailPassordAsyncAction.run(
-        () => super.signUpStoreEmailPassord(email: email, password: password));
+    return _$authStoreEmailPassordSignUpAsyncAction.run(() =>
+        super.authStoreEmailPassordSignUp(email: email, password: password));
   }
 
   final _$_SignUpStoreBaseActionController =

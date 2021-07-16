@@ -97,7 +97,7 @@ abstract class _SignUpStoreBase with Store {
   }
 
   @action
-  Future<void> signUpStoreEmailPassord({
+  Future<void> authStoreEmailPassordSignUp({
     required String email,
     required String password,
   }) async {
