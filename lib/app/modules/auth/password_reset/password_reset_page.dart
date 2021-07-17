@@ -6,7 +6,7 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:top_snackbar_flutter/custom_snack_bar.dart';
 import 'package:top_snackbar_flutter/top_snack_bar.dart';
 
-import '../../../core/config/theme/fonts.dart';
+import '../../../shared/config/theme/fonts.dart';
 import 'password_reset_store.dart';
 
 class PasswordResetPage extends StatefulWidget {

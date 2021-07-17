@@ -1,7 +1,7 @@
 import 'package:mobx/mobx.dart';
 
-import 'package:flutter_auth/app/core/interfaces/shared_repository_interface.dart';
-import 'package:flutter_auth/app/core/repositories/shared_repository.dart';
+import 'package:flutter_auth/app/shared/shared_preferences/repositories/interfaces/shared_repository_interface.dart';
+import 'package:flutter_auth/app/shared/shared_preferences/repositories/shared_repository.dart';
 
 part 'drawer_widget_store.g.dart';
 

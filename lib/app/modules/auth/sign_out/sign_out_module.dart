@@ -8,7 +8,6 @@ class SignOutModule extends Module {
   @override
   final List<Bind> binds = [
     Bind.lazySingleton((i) => SignOutStore(i.get<AuthRepository>())),
-    Bind.lazySingleton((i) => AuthRepository()),
   ];
 
   @override

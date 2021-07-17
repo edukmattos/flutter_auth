@@ -1,5 +1,5 @@
 import '../enums/response_status_enum.dart';
-import '../interfaces/error_interceptor_interface.dart';
+import '../errors/interfaces/error_interceptor_interface.dart';
 import 'response_default.dart';
 
 class ResponseBuilder {

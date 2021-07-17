@@ -8,7 +8,6 @@ class PasswordResetModule extends Module {
   @override
   final List<Bind> binds = [
     Bind.lazySingleton((i) => PasswordResetStore(i.get<AuthRepository>())),
-    Bind.lazySingleton((i) => AuthRepository()),
   ];
 
   @override

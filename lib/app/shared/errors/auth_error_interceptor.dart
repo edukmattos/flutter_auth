@@ -1,6 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 
-import '../interfaces/error_interceptor_interface.dart';
+import 'interfaces/error_interceptor_interface.dart';
 
 class AuthErrorInterceptor implements IErrorInterceptor {
   AuthErrorInterceptor(String error);

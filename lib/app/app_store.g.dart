@@ -27,13 +27,13 @@ mixin _$AppStore on _AppStoreBase, Store {
   final _$appThemeAtom = Atom(name: '_AppStoreBase.appTheme');
 
   @override
-  IAppThemeInterface get appTheme {
+  IAppTheme get appTheme {
     _$appThemeAtom.reportRead();
     return super.appTheme;
   }
 
   @override
-  set appTheme(IAppThemeInterface value) {
+  set appTheme(IAppTheme value) {
     _$appThemeAtom.reportWrite(value, super.appTheme, () {
       super.appTheme = value;
     });

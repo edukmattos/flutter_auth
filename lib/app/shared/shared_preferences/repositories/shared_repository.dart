@@ -1,4 +1,4 @@
-import 'package:flutter_auth/app/core/interfaces/shared_repository_interface.dart';
+import 'package:flutter_auth/app/shared/shared_preferences/repositories/interfaces/shared_repository_interface.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SharedRepository implements ISharedRepository {

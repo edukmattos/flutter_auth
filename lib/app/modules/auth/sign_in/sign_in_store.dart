@@ -4,8 +4,8 @@ import 'package:mobx/mobx.dart';
 import 'package:string_validator/string_validator.dart' as stringValidator;
 import 'package:validators/validators.dart';
 
-import '../../../core/interfaces/shared_repository_interface.dart';
-import '../../../core/repositories/shared_repository.dart';
+import '../../../shared/shared_preferences/repositories/interfaces/shared_repository_interface.dart';
+import '../../../shared/shared_preferences/repositories/shared_repository.dart';
 import '../../../shared/auth/repositories/auth_repository.dart';
 
 part 'sign_in_store.g.dart';

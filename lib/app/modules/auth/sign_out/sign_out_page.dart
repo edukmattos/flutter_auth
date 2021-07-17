@@ -2,7 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
-import '../../../core/config/theme/fonts.dart';
+import '../../../shared/config/theme/fonts.dart';
 import 'sign_out_store.dart';
 
 class SignOutPage extends StatefulWidget {

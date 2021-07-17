@@ -1,13 +1,13 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter_auth/app/core/interfaces/shared_repository_interface.dart';
-import 'package:flutter_auth/app/core/repositories/shared_repository.dart';
-import 'package:flutter_auth/app/shared/auth/repositories/interfaces/auth_repository_interface.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
-import '../../../core/errors/auth_error_interceptor.dart';
-import '../../../core/responses/response_builder.dart';
-import '../../../core/responses/response_default.dart';
+import '../../errors/auth_error_interceptor.dart';
+import '../../responses/response_builder.dart';
+import '../../responses/response_default.dart';
+import '../../shared_preferences/repositories/interfaces/shared_repository_interface.dart';
+import '../../shared_preferences/repositories/shared_repository.dart';
+import 'interfaces/auth_repository_interface.dart';
 
 class AuthRepository implements IAuthRepository {
   ISharedRepository sharedRepository = SharedRepository();
@@ -128,5 +128,13 @@ class AuthRepository implements IAuthRepository {
 
   sharedPrefsUserEmailSave(value) async {
     await sharedRepository.setValue<String>('userEmail', value);
+  }
+
+  sharedPrefsUserDisplayNameLoad() async {
+    await sharedRepository.getValue<String>('userDisplayName');
+  }
+
+  sharedPrefsUserEmailLoad() async {
+    await sharedRepository.getValue<String>('userEmail');
   }
 }

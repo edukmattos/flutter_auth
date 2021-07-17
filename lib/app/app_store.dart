@@ -1,10 +1,10 @@
 import 'package:mobx/mobx.dart';
 
-import 'core/interfaces/app_theme_interface.dart';
-import 'core/interfaces/shared_repository_interface.dart';
-import 'core/repositories/shared_repository.dart';
-import 'core/themes/app_theme_dark.dart';
-import 'core/themes/app_theme_light.dart';
+import 'shared/shared_preferences/repositories/interfaces/shared_repository_interface.dart';
+import 'shared/shared_preferences/repositories/shared_repository.dart';
+import 'shared/themes/app_theme_dark.dart';
+import 'shared/themes/app_theme_light.dart';
+import 'shared/themes/intrafaces/app_theme_interface.dart';
 
 part 'app_store.g.dart';
 
@@ -28,7 +28,7 @@ abstract class _AppStoreBase with Store {
   }
 
   @observable
-  IAppThemeInterface appTheme = AppThemeLight();
+  IAppTheme appTheme = AppThemeLight();
 
   @action
   sharedPrefsThemeLoad() async {

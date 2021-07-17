@@ -7,8 +7,8 @@ import 'package:sign_button/sign_button.dart';
 import 'package:top_snackbar_flutter/custom_snack_bar.dart';
 import 'package:top_snackbar_flutter/top_snack_bar.dart';
 
-import '../../../core/config/theme/app_config_colors.dart';
-import '../../../core/config/theme/fonts.dart';
+import '../../../shared/config/theme/app_config_colors.dart';
+import '../../../shared/config/theme/fonts.dart';
 import 'sign_in_store.dart';
 
 class SignInPage extends StatefulWidget {

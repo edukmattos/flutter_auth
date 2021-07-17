@@ -1,4 +1,4 @@
-import '../../../../core/responses/response_default.dart';
+import '../../../responses/response_default.dart';
 
 abstract class IAuthRepository {
   Future<DefaultResponse> authRepoSignInWithGoogle();
