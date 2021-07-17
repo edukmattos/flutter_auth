@@ -14,7 +14,7 @@ class SignInStore = _SignInStoreBase with _$SignInStore;
 
 abstract class _SignInStoreBase with Store {
   AuthRepository authRepository;
-  ISharedRepositoryInterface sharedRepository = SharedRepository();
+  ISharedRepository sharedRepository = SharedRepository();
 
   _SignInStoreBase(
     this.authRepository,

@@ -10,7 +10,7 @@ import '../../../core/responses/response_builder.dart';
 import '../../../core/responses/response_default.dart';
 
 class AuthRepository implements IAuthRepository {
-  ISharedRepositoryInterface sharedRepository = SharedRepository();
+  ISharedRepository sharedRepository = SharedRepository();
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
   GoogleSignIn _googleSignIn = GoogleSignIn(

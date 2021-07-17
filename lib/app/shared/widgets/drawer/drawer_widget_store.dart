@@ -8,7 +8,7 @@ part 'drawer_widget_store.g.dart';
 class DrawerWidgetStore = _DrawerWidgetStoreBase with _$DrawerWidgetStore;
 
 abstract class _DrawerWidgetStoreBase with Store {
-  ISharedRepositoryInterface sharedRepository = SharedRepository();
+  ISharedRepository sharedRepository = SharedRepository();
 
   @observable
   String userDisplayName = "EduKMattos";

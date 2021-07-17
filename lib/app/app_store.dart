@@ -11,7 +11,7 @@ part 'app_store.g.dart';
 class AppStore = _AppStoreBase with _$AppStore;
 
 abstract class _AppStoreBase with Store {
-  ISharedRepositoryInterface sharedRepository = SharedRepository();
+  ISharedRepository sharedRepository = SharedRepository();
 
   _AppStoreBase() {
     sharedPrefsThemeLoad();

@@ -16,7 +16,7 @@ class AppModule extends Module {
   @override
   final List<Bind> binds = [
     Bind.lazySingleton((i) => DashboardStore()),
-    Bind<ISharedRepositoryInterface>((i) => SharedRepository()),
+    Bind<ISharedRepository>((i) => SharedRepository()),
     Bind.lazySingleton((i) => AppStore()),
     //Bind.instance((i) => AppStore()),
   ];

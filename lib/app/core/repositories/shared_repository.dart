@@ -1,7 +1,7 @@
 import 'package:flutter_auth/app/core/interfaces/shared_repository_interface.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class SharedRepository implements ISharedRepositoryInterface {
+class SharedRepository implements ISharedRepository {
   @override
   Future<dynamic> getValue<T>(String key) async {
     return await setInstance().then((sharedPreferences) {
